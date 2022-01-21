@@ -19,7 +19,8 @@ function SignUp () {
     email: '',
     nickname: '',
     password: '',
-    passwordCheck: ''
+    passwordCheck: '',
+    submit: ''
   });
 
   const regEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
@@ -48,9 +49,9 @@ function SignUp () {
     //           .post('',{inputInfo.email}, config)
     //           .then((res) => {
     //               if(res.data.message === 'ok') {
-    //                 setCehckText({ ...checkText, email : '사용 가능한 이메일입니다.'})
+    //                 setCehckText({ ...checkText, email : '사용 가능한 이메일 입니다.'})
     //               } else {
-    //                 setCehckText({ ...checkText, email : '중복된 이메일입니다.'})
+    //                 setCehckText({ ...checkText, email : '중복된 이메일 입니다.'})
     //               }
     //           })
     //          .catch((err) => {
@@ -58,7 +59,7 @@ function SignUp () {
     //           })
 
     //     } else {
-    //         setCehckText({ ...checkText, email : '잘못된 이메일 형식입니다.'})
+    //         setCehckText({ ...checkText, email : '잘못된 이메일 형식 입니다.'})
     //     }
     // }
     // if(event.target.placeholder === 'nickname') {
@@ -67,9 +68,9 @@ function SignUp () {
     //           .post('',{inputInfo.nickname}, config)
     //           .then((res) => {
     //               if(res.data.message === 'ok') {
-    //                 setCehckText({ ...checkText, nickname : '사용 가능한 닉네임입니다.'})
+    //                 setCehckText({ ...checkText, nickname : '사용 가능한 닉네임 입니다.'})
     //               } else {
-    //                 setCehckText({ ...checkText, nickname : '중복된 닉네임입니다.'})
+    //                 setCehckText({ ...checkText, nickname : '중복된 닉네임 입니다.'})
     //               }
     //           })
     //          .catch((err) => {
@@ -95,6 +96,33 @@ function SignUp () {
     }
   };
 
+  const handleSignUp = (event) => {
+      // if({
+      //     checkText.email === '사용 가능한 이메일 입니다.' &&
+      //     checkText.nickname === '사용 가능한 닉네임 입니다.' &&
+      //     checkText.password === '사용 가능한 비밀번호 입니다.' &&
+      //     checkText.passwordCheck === '비밀번호가 일치합니다.'
+      // }) {
+      //     axios
+      //       .post('', 
+      //         {
+      //           email: inputInfo.email,
+      //           password: inputInfo.password,
+      //           nickname: inputInfo.nickname
+      //         },
+      //         config
+      //       )
+      //       .then((res) => {
+      //           //회원가입이 되면 로그인 페이지로 리다이렉트
+      //       })
+      //       .catch((err) => {
+      //           console.log(err)
+      //       })
+      // } else {
+      //     setCehckText({...checkText, submit : '입력사항을 모두 올바르게 입력해주세요.'})
+      // }
+  }
+
   return (
     <div>
       <h3>Sign Up</h3>
@@ -111,7 +139,8 @@ function SignUp () {
       <input type='password' placeholder='password check' onChange={handleInput} onBlur={handlePwBlur} />
       <div>{checkText.passwordCheck}</div>
       {/* 성공시 login 리다이렉트 */}
-      <button>Sign Up</button>
+      <button onClick={handleSignUp}>Sign Up</button>
+      <div>{checkText.submit}</div>
     </div>
   );
 }
