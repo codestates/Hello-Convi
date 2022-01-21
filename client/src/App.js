@@ -4,16 +4,6 @@ import Nav from './components/Nav';
 
 function App () {
   return (
-<<<<<<< HEAD
-    <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path='/' element={<Main />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<SignUp />} />
-      </Routes>
-    </BrowserRouter>
-=======
     <div>
       <BrowserRouter>
         <Nav />
@@ -24,7 +14,6 @@ function App () {
         </Routes>
       </BrowserRouter>
     </div>
->>>>>>> 6590b338f7bd5a785cfb95310822206908789329
   );
 }
 
