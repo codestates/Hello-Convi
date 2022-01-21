@@ -97,31 +97,31 @@ function SignUp () {
   };
 
   const handleSignUp = (event) => {
-      // if({
-      //     checkText.email === '사용 가능한 이메일 입니다.' &&
-      //     checkText.nickname === '사용 가능한 닉네임 입니다.' &&
-      //     checkText.password === '사용 가능한 비밀번호 입니다.' &&
-      //     checkText.passwordCheck === '비밀번호가 일치합니다.'
-      // }) {
-      //     axios
-      //       .post('', 
-      //         {
-      //           email: inputInfo.email,
-      //           password: inputInfo.password,
-      //           nickname: inputInfo.nickname
-      //         },
-      //         config
-      //       )
-      //       .then((res) => {
-      //           //회원가입이 되면 로그인 페이지로 리다이렉트
-      //       })
-      //       .catch((err) => {
-      //           console.log(err)
-      //       })
-      // } else {
-      //     setCehckText({...checkText, submit : '입력사항을 모두 올바르게 입력해주세요.'})
-      // }
-  }
+    // if({
+    //     checkText.email === '사용 가능한 이메일 입니다.' &&
+    //     checkText.nickname === '사용 가능한 닉네임 입니다.' &&
+    //     checkText.password === '사용 가능한 비밀번호 입니다.' &&
+    //     checkText.passwordCheck === '비밀번호가 일치합니다.'
+    // }) {
+    //     axios
+    //       .post('',
+    //         {
+    //           email: inputInfo.email,
+    //           password: inputInfo.password,
+    //           nickname: inputInfo.nickname
+    //         },
+    //         config
+    //       )
+    //       .then((res) => {
+    //           //회원가입이 되면 로그인 페이지로 리다이렉트
+    //       })
+    //       .catch((err) => {
+    //           console.log(err)
+    //       })
+    // } else {
+    //     setCehckText({...checkText, submit : '입력사항을 모두 올바르게 입력해주세요.'})
+    // }
+  };
 
   return (
     <div>

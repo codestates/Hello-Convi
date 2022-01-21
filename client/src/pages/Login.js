@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { actionCreators } from '../store/store'
+import { actionCreators } from '../store/store';
 import { useDispatch } from 'react-redux';
 
 const Login = () => {
@@ -10,14 +10,14 @@ const Login = () => {
       'Content-Type': 'application/json'
     }
   };
-  
-  const  dispatch = useDispatch();
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { login } = actionCreators
+  const { login } = actionCreators;
 
   const [inputInfo, setInputInfo] = useState({
     email: '',
-    password: '',
+    password: ''
   });
 
   const handleInput = (event) => {
@@ -30,27 +30,27 @@ const Login = () => {
   };
 
   const handleSubmit = (event) => {
-    if(event.target.className === 'loginBtn') {
-      //axios 성공시
-      dispatch(login({ email :'' , nickname :'' }))
+    if (event.target.className === 'loginBtn') {
+      // axios 성공시
+      dispatch(login({ email: '', nickname: '' }));
     }
-    if(event.target.className === 'githubBtn') {
-      //axios
-      dispatch(login({ email :'' , nickname :'' }))
+    if (event.target.className === 'githubBtn') {
+      // axios
+      dispatch(login({ email: '', nickname: '' }));
     }
-    if(event.target.className === 'signup') {
-      navigate('/signup')
+    if (event.target.className === 'signup') {
+      navigate('/signup');
     }
-  }
+  };
 
   return (
-  <div>
+    <div>
       <h3>Login</h3>
-      <input type='email' placeholder='Email' onChange={handleInput}/>
-      <input type='password' placeholder='password' onChange={handleInput}/>
-      <button className="loginBtn" onClick={handleSubmit}>Login</button>
-      <button className="githubBtn" onClick={handleSubmit}>Github</button>
-      <button className="signup" onClick={handleSubmit}>SignUp</button>
+      <input type='email' placeholder='Email' onChange={handleInput} />
+      <input type='password' placeholder='password' onChange={handleInput} />
+      <button className='loginBtn' onClick={handleSubmit}>Login</button>
+      <button className='githubBtn' onClick={handleSubmit}>Github</button>
+      <button className='signup' onClick={handleSubmit}>SignUp</button>
     </div>
   );
 };
