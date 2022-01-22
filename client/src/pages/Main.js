@@ -2,7 +2,11 @@
 const Main = () => {
   return (
     <div>
-      Main
+      {/* <Search />
+      <button>리뷰</button>
+      <section>
+        
+      </section> */}
     </div>
   );
 };

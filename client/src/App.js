@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Main, Login, SignUp } from './pages';
+import { Main, Login, SignUp, ItemInfo } from './pages';
 import Nav from './components/Nav';
 
 function App () {
@@ -10,6 +10,7 @@ function App () {
         <Route path='/' element={<Main />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
+        <Route path='/iteminfo' element={<ItemInfo />} />
       </Routes>
     </BrowserRouter>
   );
