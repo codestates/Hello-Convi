@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { actionCreators } from '../store/store';
 import { useDispatch } from 'react-redux';
 
-const Login = () => {
+function Login () {
   const config = {
     headers: {
       'Content-Type': 'application/json'
@@ -21,7 +21,7 @@ const Login = () => {
   });
 
   const handleInput = (event) => {
-    if (event.target.placeholder === 'Email') {
+    if (event.target.placeholder === 'email') {
       setInputInfo({ ...inputInfo, email: event.target.value });
     }
     if (event.target.placeholder === 'password') {
@@ -32,11 +32,13 @@ const Login = () => {
   const handleSubmit = (event) => {
     if (event.target.className === 'loginBtn') {
       // axios 성공시
-      dispatch(login({ email: '', nickname: '' }));
+      dispatch(login({ email: '응답의 email', nickname: '응답의 nickname' }));
+      // axios 실패시
     }
-    if (event.target.className === 'githubBtn') {
-      // axios
-      dispatch(login({ email: '', nickname: '' }));
+    if (event.target.className === 'oauthBtn') {
+      // axios 성공시
+      dispatch(login({ email: '응답의 email', nickname: '응답의 nickname' }));
+      // axios 실패시
     }
     if (event.target.className === 'signup') {
       navigate('/signup');
@@ -45,14 +47,17 @@ const Login = () => {
 
   return (
     <div>
-      <h3>Login</h3>
-      <input type='email' placeholder='Email' onChange={handleInput} />
-      <input type='password' placeholder='password' onChange={handleInput} />
+      <div>
+        <input type='email' placeholder='email' onChange={handleInput} />
+      </div>
+      <div>
+        <input type='password' placeholder='password' onChange={handleInput} />
+      </div>
       <button className='loginBtn' onClick={handleSubmit}>Login</button>
       <button className='githubBtn' onClick={handleSubmit}>Github</button>
       <button className='signup' onClick={handleSubmit}>SignUp</button>
     </div>
   );
-};
+}
 
 export default Login;

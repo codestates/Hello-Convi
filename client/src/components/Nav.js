@@ -4,13 +4,13 @@ function Nav () {
   return (
     <div>
       <span>
-        <Link to='/'>Main </Link>
+        <Link to='/'>Main  </Link>
       </span>
       <span>
-        <Link to='/login'>Login </Link>
+        <Link to='/login'>Login  </Link>
       </span>
       <span>
-        <Link to='/signup'>SignUp </Link>
+        <Link to='/signup'>SignUp  </Link>
       </span>
     </div>
   );
