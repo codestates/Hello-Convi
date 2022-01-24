@@ -49,7 +49,7 @@ function Nav () {
         outline: none;
         color: black;
       }
-  `
+  `;
 
   const LinkWrap = styled.div`
     display: flex;
@@ -62,7 +62,7 @@ function Nav () {
     span {
       padding: 0 10px 0 10px;
     }
-  `
+  `;
 
   const logoutHandler = () => {
     dispatch(logout());
