@@ -1,12 +1,15 @@
 import { useState } from 'react';
-// import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function SignUp () {
-  // const config = {
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   }
-  // };
+  const navigate = useNavigate();
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }, withCredentials : true
+  };
 
   const [inputInfo, setInputInfo] = useState({
     email: '',
@@ -23,9 +26,9 @@ function SignUp () {
     submit: ''
   });
 
-  // const regEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+  const regEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
   const regPw = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
-  // const regNickname = /^[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9]{2,10}$/;
+  const regNickname = /^[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9]{2,10}$/;
 
   const handleInput = (event) => {
     if (event.target.placeholder === 'email') {
@@ -43,43 +46,43 @@ function SignUp () {
   };
 
   const handleOnBlur = (event) => {
-    // if(event.target.placeholder === 'Email') {
-    //     if(regEmail.test(event.target.value)) {
-    //         axios
-    //           .post('',{inputInfo.email}, config)
-    //           .then((res) => {
-    //               if(res.data.message === 'ok') {
-    //                 setCehckText({ ...checkText, email : '사용 가능한 이메일입니다.'})
-    //               } else {
-    //                 setCehckText({ ...checkText, email : '중복된 이메일입니다.'})
-    //               }
-    //           })
-    //          .catch((err) => {
-    //              console.log(err)
-    //           })
+    if(event.target.placeholder === 'email') {
+        if(regEmail.test(event.target.value)) {
+            axios.post('http://localhost:8080/check',{ email : inputInfo.email }, config)
+              .then((res) => {
+                console.log(res)
+                  if(res.data.message === "email available!") {
+                    setCheckText({ ...checkText, email : '사용 가능한 이메일 입니다.'})
+                  } else {
+                    setCheckText({ ...checkText, email : '중복된 이메일 입니다.'})
+                  }
+              })
+              .catch((err) => {
+                console.log(err)
+              })
 
-    //     } else {
-    //         setCehckText({ ...checkText, email : '잘못된 이메일 형식입니다.'})
-    //     }
-    // }
-    // if(event.target.placeholder === 'nickname') {
-    //     if(regN.test(event.target.value)) {
-    //         axios
-    //           .post('',{inputInfo.nickname}, config)
-    //           .then((res) => {
-    //               if(res.data.message === 'ok') {
-    //                 setCehckText({ ...checkText, nickname : '사용 가능한 닉네임입니다.'})
-    //               } else {
-    //                 setCehckText({ ...checkText, nickname : '중복된 닉네임입니다.'})
-    //               }
-    //           })
-    //          .catch((err) => {
-    //              console.log(err)
-    //           })
-    //     } else {
-    //         setCehckText({ ...checkText, nickname : '닉네임은 2~10글자 사이로 입력해주세요.'})
-    //     }
-    // }
+        } else {
+            setCheckText({ ...checkText, email : '잘못된 이메일 형식입니다.'})
+        }
+    }
+    if(event.target.placeholder === 'nickname') {
+        if(regNickname.test(event.target.value)) {
+            axios
+              .post('http://localhost:8080/check',{ nickname : inputInfo.nickname }, config)
+              .then((res) => {
+                  if(res.data.message === 'nickname available!') {
+                    setCheckText({ ...checkText, nickname : '사용 가능한 닉네임 입니다.'})
+                  } else {
+                    setCheckText({ ...checkText, nickname : '중복된 닉네임 입니다.'})
+                  }
+              })
+             .catch((err) => {
+                 console.log(err)
+              })
+        } else {
+            setCheckText({ ...checkText, nickname : '닉네임은 2~10글자 사이로 입력해주세요.'})
+        }
+    }
     // 두 if 경우 모두
     // axios 성공시
     // axios 실패시
@@ -108,11 +111,12 @@ function SignUp () {
     ) {
       const sending = inputInfo;
       delete sending.passwordCheck;
-      // axios.post('', sending, config).then((res) => {
-      //   //로그인창으로 리다이렉트
-      // }).catch(err => {
-      //   console.log(err);
-      // })
+      axios.post('http://localhost:8080/signup', sending, config).then((res) => {
+        //로그인창으로 리다이렉트
+        navigate('/login');
+      }).catch(err => {
+        console.log(err);
+      })
     } else {
       setCheckText({ ...checkText, submit: '입력사항을 모두 올바르게 입력해주세요.' });
     }
@@ -155,7 +159,3 @@ function SignUp () {
 }
 
 export default SignUp;
-
-// 1. 중복확인 요청해서 받기
-// 2. 가입 요청 보내기 서버에러 발생시 '잠시 후 다시시도해 주세요' 같은거 버튼 밑에 띄우기
-// 3. 성공시 로그인 페이지로 리다이렉트

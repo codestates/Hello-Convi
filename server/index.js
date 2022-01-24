@@ -1,7 +1,7 @@
 const express = require('express');
 
 const cookieParser = require('cookie-parser');
-const port = 3000;
+const port = 8080;
 const cors = require('cors');
 const app = express();
 
@@ -12,8 +12,13 @@ const dropout = require('./controllers/dropout');
 const signup = require('./controllers/signup');
 const review = require('./routes/review');
 const user = require('./routes/user');
+const check = require('./controllers/check');
 
-app.use(cors());
+app.use(cors({
+  origin:'http://localhost:3000',
+  credentials:true
+}
+));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -25,6 +30,7 @@ app.post('/signup', signup);
 app.delete('/dropout', dropout);
 app.use('/user', user);
 app.use('/review', review);
+app.use('/check', check);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
