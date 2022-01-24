@@ -29,17 +29,11 @@ function Main () {
       <section>
         {/* 나중에 dummydata 대신에 searchedItem으로 렌더링 */}
         {dummyItems.map((item, idx) => {
-<<<<<<< HEAD
-          return (          
-            <Link to='/Iteminfo' key={idx}><Item item={item} /></Link>
-          )
-=======
           return (
             <div key={idx} onClick={(event) => handleOnClick(event, item)}>
               <Item item={item} />
             </div>
           );
->>>>>>> 305eccc2ddafa2239cfaf8cd820105c7d047053d
         })}
       </section>
 

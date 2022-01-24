@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-function ItemInfo () {
-    return (
-        <div>
-            hi
-        </div>
-    )
-}
-
-export default ItemInfo;
-=======
 import { useSelector } from 'react-redux';
 import { useEffect /* useState */ } from 'react';
 // import Search from "../components/Search";
@@ -57,4 +46,3 @@ function ItemInfo () {
 }
 
 export default ItemInfo;
->>>>>>> 305eccc2ddafa2239cfaf8cd820105c7d047053d

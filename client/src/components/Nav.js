@@ -16,11 +16,6 @@ function Nav () {
       <span>
         <Link to='/'>Main&nbsp;&nbsp;</Link>
       </span>
-<<<<<<< HEAD
-      <span>
-        <Link to='/mypage'>MyPage  </Link>
-      </span>
-=======
       {auth
         ? (
           <span>
@@ -42,7 +37,6 @@ function Nav () {
             </span>
           </span>
           )}
->>>>>>> 305eccc2ddafa2239cfaf8cd820105c7d047053d
     </div>
   );
 }
