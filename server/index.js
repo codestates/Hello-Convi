@@ -26,7 +26,6 @@ app.delete('/dropout', dropout);
 app.use('/user', user);
 app.use('/review', review);
 
-
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
