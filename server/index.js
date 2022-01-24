@@ -28,7 +28,6 @@ app.use('/user', user);
 app.use('/review', review);
 app.use('/check', check);
 
-
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
