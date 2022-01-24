@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
+// import axios from 'axios';
 
 function SignUp () {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  };
+  // const config = {
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   }
+  // };
 
   const [inputInfo, setInputInfo] = useState({
     email: '',
@@ -23,9 +23,9 @@ function SignUp () {
     submit: ''
   });
 
-  const regEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+  // const regEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
   const regPw = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
-  const regNickname = /^[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9]{2,10}$/;
+  // const regNickname = /^[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9]{2,10}$/;
 
   const handleInput = (event) => {
     if (event.target.placeholder === 'email') {
@@ -43,7 +43,7 @@ function SignUp () {
   };
 
   const handleOnBlur = (event) => {
-        // if(event.target.placeholder === 'Email') {
+    // if(event.target.placeholder === 'Email') {
     //     if(regEmail.test(event.target.value)) {
     //         axios
     //           .post('',{inputInfo.email}, config)
@@ -80,10 +80,10 @@ function SignUp () {
     //         setCehckText({ ...checkText, nickname : '닉네임은 2~10글자 사이로 입력해주세요.'})
     //     }
     // }
-      // 두 if 경우 모두 
-      // axios 성공시
-      // axios 실패시
-      // 로 나눠서 미리 짜기    
+    // 두 if 경우 모두
+    // axios 성공시
+    // axios 실패시
+    // 로 나눠서 미리 짜기
   };
 
   const handlePwBlur = (event) => {

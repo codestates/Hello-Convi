@@ -1,12 +1,12 @@
 import dummyItems from '../dummy/dummyItems';
-import Nav from '../components/Nav';
+// import Nav from '../components/Nav';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Search from '../components/Search';
 import Item from '../components/Item';
 
 function Main () {
-  const [searchedItem, setSearchedItem] = useState([]);
+  const [setSearchedItem] = useState([]);
 
   return (
     <div>
@@ -15,11 +15,11 @@ function Main () {
       <section>
         {/* 나중에 dummydata 대신에 searchedItem으로 렌더링 */}
         {dummyItems.map((item, idx) => {
-          return (          
+          return (
             <Link to='/iteminfo' key={idx}><Item item={item} /></Link>
-          )
+          );
         })}
-      </section>      
+      </section>
 
     </div>
   );
