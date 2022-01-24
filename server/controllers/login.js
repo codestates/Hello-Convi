@@ -12,13 +12,14 @@ module.exports = async (req, res) => {
     const payload = {
       id: data.id,
       email: data.email,
-      nickname: data.username,
+      nickname: data.nickname,
       createdAt: data.createdAt,
       updatedAt: data.updatedAt
     };
-    const jwtToken = sign(payload, process.env.ACCESS_SECRET, { expiresIn: '10m' });
+    const accessToken = sign(payload, process.env.ACCESS_SECRET, { expiresIn: '100m' });
 
-    res.cookie('jwt', jwtToken).status(200).json({ message: 'ok' });
-    res.status(200).send('login success');
+    res.cookie('accessToken', accessToken).status(200).json({ message: 'login success' });
   }
 };
+
+// 끝

@@ -20,14 +20,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.post('/login', login);
-app.post('/logout', logout);
+app.get('/logout', logout);
 app.get('/getitems/:word', getitems);
 app.post('/signup', signup);
 app.delete('/dropout', dropout);
 app.use('/user', user);
 app.use('/review', review);
 app.use('/check', check);
-
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
