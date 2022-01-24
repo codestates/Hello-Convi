@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
     };
     const accessToken = sign(payload, process.env.ACCESS_SECRET, { expiresIn: '100m' });
 
-    res.cookie('accessToken', accessToken).status(200).json({ message: 'login success' });
+    res.cookie('accessToken', accessToken).status(200).json({ data: payload, message: 'login success' });
   }
 };
 

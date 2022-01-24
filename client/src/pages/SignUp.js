@@ -51,10 +51,11 @@ function SignUp () {
       if (regEmail.test(event.target.value)) {
         axios.post('http://localhost:8080/check', { email: inputInfo.email }, config)
           .then((res) => {
-            if (res.data.message === 'ok') {
-              setCheckText({ ...checkText, email: '사용 가능한 이메일입니다.' });
+            console.log(res);
+            if (res.data.message === 'email available!') {
+              setCheckText({ ...checkText, email: '사용 가능한 이메일 입니다.' });
             } else {
-              setCheckText({ ...checkText, email: '중복된 이메일입니다.' });
+              setCheckText({ ...checkText, email: '중복된 이메일 입니다.' });
             }
           })
           .catch((err) => {
@@ -66,12 +67,13 @@ function SignUp () {
     }
     if (event.target.placeholder === 'nickname') {
       if (regNickname.test(event.target.value)) {
-        axios.post('http://localhost:8080/check', { nickname: inputInfo.nickname }, config)
+        axios
+          .post('http://localhost:8080/check', { nickname: inputInfo.nickname }, config)
           .then((res) => {
-            if (res.data.message === 'ok') {
-              setCheckText({ ...checkText, nickname: '사용 가능한 닉네임입니다.' });
+            if (res.data.message === 'nickname available!') {
+              setCheckText({ ...checkText, nickname: '사용 가능한 닉네임 입니다.' });
             } else {
-              setCheckText({ ...checkText, nickname: '중복된 닉네임입니다.' });
+              setCheckText({ ...checkText, nickname: '중복된 닉네임 입니다.' });
             }
           })
           .catch((err) => {
@@ -109,7 +111,7 @@ function SignUp () {
     ) {
       const sending = inputInfo;
       delete sending.passwordCheck;
-      axios.post('', sending, config).then((res) => {
+      axios.post('http://localhost:8080/signup', sending, config).then((res) => {
         // 로그인창으로 리다이렉트
         navigate('/login');
       }).catch(err => {
@@ -157,7 +159,3 @@ function SignUp () {
 }
 
 export default SignUp;
-
-// 1. 중복확인 요청해서 받기
-// 2. 가입 요청 보내기 서버에러 발생시 '잠시 후 다시시도해 주세요' 같은거 버튼 밑에 띄우기
-// 3. 성공시 로그인 페이지로 리다이렉트

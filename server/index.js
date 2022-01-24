@@ -14,14 +14,18 @@ const review = require('./routes/review');
 const user = require('./routes/user');
 const check = require('./controllers/check');
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}
+));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.post('/login', login);
 app.get('/logout', logout);
-app.get('/getitems/:word', getitems);
+app.get('/getitems', getitems);
 app.post('/signup', signup);
 app.delete('/dropout', dropout);
 app.use('/user', user);
