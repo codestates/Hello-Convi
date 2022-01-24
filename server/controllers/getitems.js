@@ -3,12 +3,12 @@ const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
 
 module.exports = (req, res) => {
-  const word = req.params.word;
+  const query = req.query.itemid
 
   item.findAll({
     where: {
       name: {
-        [Op.like]: '%' + word + '%'
+        [Op.like]: '%' + query + '%'
       }
     }
   })

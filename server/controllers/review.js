@@ -3,20 +3,12 @@ const { verify } = require('jsonwebtoken');
 require('dotenv').config();
 
 module.exports = {
-  get: async (req, res) => {
-    const token = req.cookies.accessToken;
-    const data = verify(token, process.env.ACCESS_SECRET, (err, result) => {
-      if (err) {
-        return null;
-      } else {
-        return result;
-      }
-    });
-    const userReview = await review.findAll({ where: { user_id: data.id } });
-
-    const tmp = userReview.map(el => el.dataValues);
-
-    res.status(200).json(tmp);
+  get:  (req, res) => {
+    const params = req.params.id
+    console.log(params)
+    review.findAll({where:{itemId:params}})
+    .then(el=>res.status(200).json({data:el,message:"ok"}))
+    
   },
   post: (req, res) => {
     const { userId, itemId, score, content } = req.body;
@@ -31,7 +23,7 @@ module.exports = {
       })
         .then(result => {
           console.log('===============review 추가완료===============');
-          res.redirect('/Main');
+          res.redirect('/');
         }).catch(err => console.log(err));
     }
   },

@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { user } = require('../models');
+require('dotenv').config();
+
 
 module.exports = async (req, res) => {
   const nickname = req.body.nickname;
@@ -8,7 +10,7 @@ module.exports = async (req, res) => {
 
   if (password && !email && !nickname) { // 비밀번호 확인 요청
     // 이 경우 쿠키에 있는 유저 정보와 비밀번호 일치 확인
-    const cookie = res.cookies.jwt;
+    const cookie = res.cookies.accessToken;
     if (!cookie) {
       res.json({ data: null, message: 'not Authorized' });
     } else {
