@@ -25,7 +25,7 @@ app.use(cookieParser());
 
 app.post('/login', login);
 app.get('/logout', logout);
-app.get('/getitems/:word', getitems);
+app.get('/getitems', getitems);
 app.post('/signup', signup);
 app.delete('/dropout', dropout);
 app.use('/user', user);
