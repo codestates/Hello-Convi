@@ -1,15 +1,16 @@
-// import axios from 'axios';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { actionCreators } from '../store/store';
 import { useDispatch } from 'react-redux';
 
 function Login () {
-  // const config = {
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   }
-  // };
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    withCredentials: true
+  };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,7 +33,12 @@ function Login () {
   const handleSubmit = (event) => {
     if (event.target.className === 'loginBtn') {
       // axios 성공시
-      dispatch(login({ email: '응답의 email', nickname: '응답의 nickname' }));
+      axios.post('http://localhost:8080/login', { email: inputInfo.email, password: inputInfo.password }, config)
+        .then(el => {
+          console.log(el.data);
+          dispatch(login({ email: el.data.data.email, nickname: el.data.data.nickname }));
+          navigate('/');
+        });
       // axios 실패시
     }
     if (event.target.className === 'oauthBtn') {
