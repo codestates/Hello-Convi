@@ -1,3 +1,5 @@
 module.exports = (req, res) => {
-  res.status(205).send('Logout success');
+  res.clearCookie('accessToken').status(205).redirect('/');
 };
+
+// 끝

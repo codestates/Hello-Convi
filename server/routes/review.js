@@ -5,6 +5,6 @@ const Controller = require('../controllers/review');
 router.get('/', Controller.get);
 router.post('/', Controller.post);
 router.patch('/', Controller.patch);
-router.delete('/', Controller.delete);
+router.delete('/:id', Controller.delete);
 
 module.exports = router;

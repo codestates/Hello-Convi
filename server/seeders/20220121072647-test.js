@@ -18,6 +18,7 @@ module.exports = {
       const obj = {
         name: '삼각김밥' + i,
         img: i,
+        price: i * 1000,
         content: '맛이조아' + i,
         createdAt: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
         updatedAt: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
