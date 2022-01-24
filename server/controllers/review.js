@@ -3,12 +3,11 @@ const { verify } = require('jsonwebtoken');
 require('dotenv').config();
 
 module.exports = {
-  get:  (req, res) => {
-    const params = req.params.id
-    console.log(params)
-    review.findAll({where:{itemId:params}})
-    .then(el=>res.status(200).json({data:el,message:"ok"}))
-    
+  get: (req, res) => {
+    const params = req.params.id;
+    console.log(params);
+    review.findAll({ where: { itemId: params } })
+      .then(el => res.status(200).json({ data: el, message: 'ok' }));
   },
   post: (req, res) => {
     const { userId, itemId, score, content } = req.body;
