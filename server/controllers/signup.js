@@ -1,5 +1,4 @@
 const { user } = require('../models');
-const { sign } = require('jsonwebtoken');
 
 module.exports = async (req, res) => {
   const { email, password, nickname } = req.body;
@@ -9,17 +8,11 @@ module.exports = async (req, res) => {
     user.findOrCreate({ where: { email, nickname, password } })
       .then(([result, created]) => {
         if (created) {
-          const payload = {
-            id: result.dataValues.id,
-            email: result.dataValues.email,
-            updatedAt: result.dataValues.updatedAt,
-            createdAt: result.dataValues.createdAt
-          };
-          const jwtToken = sign(payload, process.env.ACCESS_SECRET, { expiresIn: '10m' });
-          res.cookie('jwt', jwtToken).status(201).send({ message: 'ok' });
+          res.status(201).send('signup success');
         } else {
           res.status(409).send('email exist');
         }
-      });
+      }).catch(err => console.log(err));
   }
 };
+// 회원가입 끝

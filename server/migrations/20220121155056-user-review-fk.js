@@ -9,7 +9,7 @@ module.exports = {
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
     queryInterface.addConstraint('reviews', {
-      fields: ['user_id'],
+      fields: ['userId'],
       type: 'foreign key',
       name: 'user_review_fk',
       references: {
