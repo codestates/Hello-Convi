@@ -3,6 +3,6 @@ const router = express.Router();
 const Controller = require('../controllers/user');
 
 router.get('/', Controller.get);
-router.patch('/update', Controller.patch);
+router.patch('/', Controller.patch);
 
 module.exports = router;
