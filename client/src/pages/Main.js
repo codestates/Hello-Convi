@@ -1,13 +1,24 @@
 import dummyItems from '../dummy/dummyItems';
 import { useState } from 'react';
-
 import Search from '../components/Search';
 import Item from '../components/Item';
-
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
 import { actionCreators } from '../store/store';
+import styled from 'styled-components';
+
+const MainWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+`;
+
+const SectionWrap = styled.section`
+  margin-top: 20px;
+`
 
 function Main () {
   const [searchedItem, setSearchedItem] = useState([]);
@@ -23,10 +34,10 @@ function Main () {
   };
 
   return (
-    <div>
+    <MainWrap>
+      <img src='/images/logo3.png' alt='logo'/>
       <Search setSearchedItem={setSearchedItem} />
-      <button>리뷰작성</button>
-      <section>
+      <SectionWrap>
         {/* 나중에 dummydata 대신에 searchedItem으로 렌더링 */}
         {dummyItems.map((item, idx) => {
           return (
@@ -35,9 +46,8 @@ function Main () {
             </div>
           );
         })}
-      </section>
-
-    </div>
+      </SectionWrap>
+    </MainWrap>
   );
 }
 
