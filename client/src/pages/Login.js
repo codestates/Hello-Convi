@@ -1,15 +1,15 @@
-import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+// import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { actionCreators } from '../store/store';
 import { useDispatch } from 'react-redux';
 
 function Login () {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  };
+  // const config = {
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   }
+  // };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
