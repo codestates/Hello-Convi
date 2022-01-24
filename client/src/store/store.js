@@ -22,7 +22,7 @@ const reducer = createReducer({
       score: '',
       createdAt: ''
     }
-  }  
+  }
 }, {
   [login]: (state, action) => {
     state.userInfo.auth = true;

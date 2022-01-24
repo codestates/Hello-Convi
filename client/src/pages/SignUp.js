@@ -8,7 +8,8 @@ function SignUp () {
   const config = {
     headers: {
       'Content-Type': 'application/json'
-    }, withCredentials : true
+    },
+    withCredentials: true
   };
 
   const [inputInfo, setInputInfo] = useState({
@@ -46,42 +47,41 @@ function SignUp () {
   };
 
   const handleOnBlur = (event) => {
-    if(event.target.placeholder === 'email') {
-        if(regEmail.test(event.target.value)) {
-            axios.post('http://localhost:8080/check',{ email : inputInfo.email }, config)
-              .then((res) => {
-                console.log(res)
-                  if(res.data.message === "email available!") {
-                    setCheckText({ ...checkText, email : '사용 가능한 이메일 입니다.'})
-                  } else {
-                    setCheckText({ ...checkText, email : '중복된 이메일 입니다.'})
-                  }
-              })
-              .catch((err) => {
-                console.log(err)
-              })
-
-        } else {
-            setCheckText({ ...checkText, email : '잘못된 이메일 형식입니다.'})
-        }
+    if (event.target.placeholder === 'email') {
+      if (regEmail.test(event.target.value)) {
+        axios.post('http://localhost:8080/check', { email: inputInfo.email }, config)
+          .then((res) => {
+            console.log(res);
+            if (res.data.message === 'email available!') {
+              setCheckText({ ...checkText, email: '사용 가능한 이메일 입니다.' });
+            } else {
+              setCheckText({ ...checkText, email: '중복된 이메일 입니다.' });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        setCheckText({ ...checkText, email: '잘못된 이메일 형식입니다.' });
+      }
     }
-    if(event.target.placeholder === 'nickname') {
-        if(regNickname.test(event.target.value)) {
-            axios
-              .post('http://localhost:8080/check',{ nickname : inputInfo.nickname }, config)
-              .then((res) => {
-                  if(res.data.message === 'nickname available!') {
-                    setCheckText({ ...checkText, nickname : '사용 가능한 닉네임 입니다.'})
-                  } else {
-                    setCheckText({ ...checkText, nickname : '중복된 닉네임 입니다.'})
-                  }
-              })
-             .catch((err) => {
-                 console.log(err)
-              })
-        } else {
-            setCheckText({ ...checkText, nickname : '닉네임은 2~10글자 사이로 입력해주세요.'})
-        }
+    if (event.target.placeholder === 'nickname') {
+      if (regNickname.test(event.target.value)) {
+        axios
+          .post('http://localhost:8080/check', { nickname: inputInfo.nickname }, config)
+          .then((res) => {
+            if (res.data.message === 'nickname available!') {
+              setCheckText({ ...checkText, nickname: '사용 가능한 닉네임 입니다.' });
+            } else {
+              setCheckText({ ...checkText, nickname: '중복된 닉네임 입니다.' });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        setCheckText({ ...checkText, nickname: '닉네임은 2~10글자 사이로 입력해주세요.' });
+      }
     }
     // 두 if 경우 모두
     // axios 성공시
@@ -112,11 +112,11 @@ function SignUp () {
       const sending = inputInfo;
       delete sending.passwordCheck;
       axios.post('http://localhost:8080/signup', sending, config).then((res) => {
-        //로그인창으로 리다이렉트
+        // 로그인창으로 리다이렉트
         navigate('/login');
       }).catch(err => {
         console.log(err);
-      })
+      });
     } else {
       setCheckText({ ...checkText, submit: '입력사항을 모두 올바르게 입력해주세요.' });
     }
