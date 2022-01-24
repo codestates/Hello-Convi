@@ -98,31 +98,32 @@ function ReviewModal () {
       {/* 폰트어썸으로 */}
       <ModalBtn onClick={handleOpenModal}>리뷰 쓰기</ModalBtn>
       {isOpen
-        ? (<ModalBackDrop onClick={handleOpenModal}>
-          <ModalView onClick={(event) => event.stopPropagation()}>
-            <span className='close_btn' onClick={handleOpenModal}>&times;</span>
-            {/* search components로 */}
-            <Search setSearchedItem={setSearchedItem} />
-            {/* option 태그로 */}
-            {/* default는 curItemInfo.itemname으로 */}
-            <select onChange={handleOptionChg}>
-              {/* {searchedItem.map((item, idx) => {
+        ? (
+          <ModalBackDrop onClick={handleOpenModal}>
+            <ModalView onClick={(event) => event.stopPropagation()}>
+              <span className='close_btn' onClick={handleOpenModal}>&times;</span>
+              {/* search components로 */}
+              <Search setSearchedItem={setSearchedItem} />
+              {/* option 태그로 */}
+              {/* default는 curItemInfo.itemname으로 */}
+              <select onChange={handleOptionChg}>
+                {/* {searchedItem.map((item, idx) => {
                             return <option value={item.itemname}></option>
                         })} */}
-              <option>물건 고르기</option>
-              {dummyItems.map((item, idx) => {
-                if (item.itemid === curItemInfo.itemid) return <option key={idx} value={item.itemname} selected>{item.itemname}</option>;
-                return <option key={idx} value={item.itemid}>{item.itemname}</option>;
-              })}
-            </select>
-            <div>score</div>
-            <form onSubmit={handleSubmit}>
-              <textarea placeholder='리뷰를 남겨보세요' />
-              {/* 요청보내기      */}
-              <button>리뷰작성</button>
-            </form>
-          </ModalView>
-        </ModalBackDrop>
+                <option>물건 고르기</option>
+                {dummyItems.map((item, idx) => {
+                  if (item.itemid === curItemInfo.itemid) return <option key={idx} value={item.itemname} selected>{item.itemname}</option>;
+                  return <option key={idx} value={item.itemid}>{item.itemname}</option>;
+                })}
+              </select>
+              <div>score</div>
+              <form onSubmit={handleSubmit}>
+                <textarea placeholder='리뷰를 남겨보세요' />
+                {/* 요청보내기      */}
+                <button>리뷰작성</button>
+              </form>
+            </ModalView>
+          </ModalBackDrop>
           )
         : null}
     </ModalContainer>
