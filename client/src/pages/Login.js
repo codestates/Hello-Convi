@@ -13,7 +13,7 @@ const LoginWrap = styled.div`
   width: 100%;
   height: 100vh;
   background-color: whitesmoke;
-`
+`;
 const LoginContainer = styled.div`
   width: 300px;
   height: 500px;
@@ -45,7 +45,7 @@ const LoginContainer = styled.div`
   .signup:hover {
     color: #34495E;
   }
-`
+`;
 
 const InputWrap = styled.div`
   display: flex;
@@ -53,7 +53,7 @@ const InputWrap = styled.div`
   flex-direction: column;
   margin-bottom: 10px;
   text-align: center;
-`
+`;
 
 const LoginInput = styled.input`
   border: 2px solid #F1F1F1;
@@ -62,7 +62,7 @@ const LoginInput = styled.input`
   width: 250px;
   font-size: 16px;
   margin-bottom: 3px;
-`
+`;
 
 const LoginButton = styled.button`
     width: 100px;
@@ -81,7 +81,7 @@ const LoginButton = styled.button`
       transform: scale(1.05);
       background-color: #000;
     }
-`
+`;
 
 const GithubButton = styled.button`
     width: 100px;
@@ -100,7 +100,7 @@ const GithubButton = styled.button`
       transform: scale(1.05);
       background-color: #000;
     }
-`
+`;
 
 function Login () {
   const config = {
@@ -129,7 +129,7 @@ function Login () {
   };
 
   const handleSubmit = (event) => {
-    if (event.target.className === 'loginBtn') {
+    if (event.target.className.includes('loginBtn')) {
       // axios 성공시
       axios.post('http://localhost:8080/login', { email: inputInfo.email, password: inputInfo.password }, config)
         .then(el => {
@@ -139,7 +139,7 @@ function Login () {
         });
       // axios 실패시
     }
-    if (event.target.className === 'oauthBtn') {
+    if (event.target.className === 'githubBtn') {
       // axios 성공시
       dispatch(login({ email: '응답의 email', nickname: '응답의 nickname' }));
       // axios 실패시
@@ -152,7 +152,7 @@ function Login () {
   return (
     <LoginWrap>
       <LoginContainer>
-      <img src='/images/logo.png' alt='logo'/>
+        <img src='/images/logo.png' alt='logo' />
         <InputWrap>
           <LoginInput type='email' placeholder='email' onChange={handleInput} />
           <LoginInput type='password' placeholder='password' onChange={handleInput} />

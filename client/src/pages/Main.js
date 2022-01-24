@@ -18,7 +18,7 @@ const MainWrap = styled.div`
 
 const SectionWrap = styled.section`
   margin-top: 20px;
-`
+`;
 
 function Main () {
   const [searchedItem, setSearchedItem] = useState([]);
@@ -35,7 +35,7 @@ function Main () {
 
   return (
     <MainWrap>
-      <img src='/images/logo3.png' alt='logo'/>
+      <img src='/images/logo3.png' alt='logo' />
       <Search setSearchedItem={setSearchedItem} />
       <SectionWrap>
         {/* 나중에 dummydata 대신에 searchedItem으로 렌더링 */}

@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
 
 module.exports = (req, res) => {
-  const query = req.query.itemid
+  const query = req.query.itemid;
 
   item.findAll({
     where: {

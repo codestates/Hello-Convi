@@ -26,7 +26,7 @@ const SignUpContainer = styled.div`
   img {
     height: 200px;
   }
-`
+`;
 
 const InputWrap = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ const InputWrap = styled.div`
   span.green {
     color: green;
   }
-`
+`;
 
 const SignUpInput = styled.input`
   border: 2px solid #F1F1F1;
@@ -50,7 +50,7 @@ const SignUpInput = styled.input`
   height: 40px;
   width: 250px;
   font-size: 16px;
-`
+`;
 
 const SignUpButton = styled.button`
     width: 70%;
@@ -68,7 +68,7 @@ const SignUpButton = styled.button`
       transform: scale(1.05);
       background-color: #000;
     }
-`
+`;
 
 function SignUp () {
   const navigate = useNavigate();
@@ -191,39 +191,47 @@ function SignUp () {
   };
 
   return (
-      <SignUpWrap>
-        <SignUpContainer>
-        <img src='/images/logo.png' alt='logo'/>
+    <SignUpWrap>
+      <SignUpContainer>
+        <img src='/images/logo.png' alt='logo' />
         <InputWrap>
-            <SignUpInput type='email' placeholder='email' onChange={handleInput} onBlur={handleOnBlur} />
-            {checkText.email === '사용 가능한 이메일 입니다.' ? (
+          <SignUpInput type='email' placeholder='email' onChange={handleInput} onBlur={handleOnBlur} />
+          {checkText.email === '사용 가능한 이메일 입니다.'
+            ? (
               <span className='green'>{checkText.email}</span>
-            ) : (
+              )
+            : (
               <span>{checkText.email}</span>
-            )}
-            <SignUpInput type='text' placeholder='nickname' onChange={handleInput} onBlur={handleOnBlur} />
-            {checkText.nickname === '사용 가능한 닉네임 입니다.' ? (
+              )}
+          <SignUpInput type='text' placeholder='nickname' onChange={handleInput} onBlur={handleOnBlur} />
+          {checkText.nickname === '사용 가능한 닉네임 입니다.'
+            ? (
               <span className='green'>{checkText.nickname}</span>
-            ) : (
+              )
+            : (
               <span>{checkText.nickname}</span>
-            )}
-            <SignUpInput type='password' placeholder='password' onChange={handleInput} onBlur={handlePwBlur} />
-            {checkText.password === '사용 가능한 비밀번호 입니다.' ? (
+              )}
+          <SignUpInput type='password' placeholder='password' onChange={handleInput} onBlur={handlePwBlur} />
+          {checkText.password === '사용 가능한 비밀번호 입니다.'
+            ? (
               <span className='green'>{checkText.password}</span>
-            ) : (
+              )
+            : (
               <span>{checkText.password}</span>
-            )}
-            <SignUpInput type='password' placeholder='password check' onChange={handleInput} onBlur={handlePwBlur} />
-            {checkText.passwordCheck === '비밀번호가 일치합니다.' ? (
+              )}
+          <SignUpInput type='password' placeholder='password check' onChange={handleInput} onBlur={handlePwBlur} />
+          {checkText.passwordCheck === '비밀번호가 일치합니다.'
+            ? (
               <span className='green'>{checkText.passwordCheck}</span>
-            ) : (
+              )
+            : (
               <span>{checkText.passwordCheck}</span>
-            )}
+              )}
         </InputWrap>
-          <br />
-          <SignUpButton onClick={handleSignUp}>Sign Up</SignUpButton>
-        </SignUpContainer>
-      </SignUpWrap>
+        <br />
+        <SignUpButton onClick={handleSignUp}>Sign Up</SignUpButton>
+      </SignUpContainer>
+    </SignUpWrap>
   );
 }
 

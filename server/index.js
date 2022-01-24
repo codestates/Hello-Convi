@@ -15,8 +15,8 @@ const user = require('./routes/user');
 const check = require('./controllers/check');
 
 app.use(cors({
-  origin:'http://localhost:3000',
-  credentials:true
+  origin: 'http://localhost:3000',
+  credentials: true
 }
 ));
 app.use(express.json());

@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch  } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const SearchWrap = styled.form`
   display: flex;
-`
+`;
 
 const Searchbtn = styled.button`
   background: none;
@@ -21,7 +21,7 @@ const Searchbtn = styled.button`
       outline: none;
       transform: scale(1.05);
   }
-`
+`;
 const SearchInput = styled.input`
   box-sizing: border-box;
   padding: 0 40px 0 10px;
@@ -33,7 +33,7 @@ const SearchInput = styled.input`
   font-size: 16px;
   font-weight: 400;
   outline: 0;
-`
+`;
 
 function Search ({ setSearchedItem }) {
   // 검색하면 검색창 비우기 나중 추가
@@ -53,7 +53,7 @@ function Search ({ setSearchedItem }) {
       <SearchWrap onSubmit={onSubmitHandler}>
         <SearchInput type='text' placeholder='상품명검색' />
         <Searchbtn>
-          <FontAwesomeIcon className='icon' icon={faSearch} size='2x'/>
+          <FontAwesomeIcon className='icon' icon={faSearch} size='2x' />
         </Searchbtn>
       </SearchWrap>
     </div>

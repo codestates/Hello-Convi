@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const { user } = require('../models');
 require('dotenv').config();
 
-
 module.exports = async (req, res) => {
   const nickname = req.body.nickname;
   const email = req.body.email;

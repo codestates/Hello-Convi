@@ -10,7 +10,7 @@ const ItemWrap = styled.div`
       outline: none;
       transform: scale(1.05);
   }
-`
+`;
 const ImgWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,12 +21,12 @@ const ImgWrap = styled.div`
         width: 100px;
       }
   margin-bottom: 10px;
-`
+`;
 const SectionWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 70%;
-`
+`;
 
 const ItemInfoWrap = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ const ItemInfoWrap = styled.div`
     margin-top: 10px;
     margin-bottom: 5px;
   }
-`
+`;
 
 const ReviewWrap = styled.div`
   display: flex;
@@ -47,7 +47,7 @@ const ReviewWrap = styled.div`
     height: 90%;
     word-break:break-all;
   }
-`
+`;
 
 const ReviewInfo = styled.div`
   display: flex;
@@ -56,7 +56,7 @@ const ReviewInfo = styled.div`
   .nickname {
     width: 50%;
   }
-`
+`;
 
 function Item ({ item }) {
   const review = item.review;
@@ -64,7 +64,7 @@ function Item ({ item }) {
   return (
     <ItemWrap>
       <ImgWrap>
-        <img src='/images/logo2.png' alt='logo'/>
+        <img src='/images/logo2.png' alt='logo' />
         <span>4.8</span>
       </ImgWrap>
       <SectionWrap>
@@ -73,11 +73,11 @@ function Item ({ item }) {
           <h3 className='itemprice'>{item.price}</h3>
         </ItemInfoWrap>
         <ReviewWrap>
-            <div>adgffdgdgdgdgfdgdgdgdgsdgsdgsdgsdggdfgdfgdfgdfgdfgdfgdfgdgdgㄶ</div>
-            <ReviewInfo>
-              <span className='nickname'>{review.nickname}</span>
-              <span>{review.score}</span>
-            </ReviewInfo>
+          <div>adgffdgdgdgdgfdgdgdgdgsdgsdgsdgsdggdfgdfgdfgdfgdfgdfgdfgdgdgㄶ</div>
+          <ReviewInfo>
+            <span className='nickname'>{review.nickname}</span>
+            <span>{review.score}</span>
+          </ReviewInfo>
         </ReviewWrap>
       </SectionWrap>
     </ItemWrap>
