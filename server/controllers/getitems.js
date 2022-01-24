@@ -1,5 +1,5 @@
 const { user, item, review } = require('../models');
-const { Sequelize ,fn,col} = require('sequelize');
+const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
 
 module.exports = async (req, res) => {
@@ -37,7 +37,6 @@ module.exports = async (req, res) => {
       payloadArray.push(payload);
     }
     res.json({ data: payloadArray });
-
   } else {
     item.findAll({
       where: {
