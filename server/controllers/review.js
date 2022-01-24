@@ -3,12 +3,11 @@ const { verify } = require('jsonwebtoken');
 require('dotenv').config();
 
 module.exports = {
-  get:  (req, res) => {
-    const params = req.params.id
-    console.log(params)
-    review.findAll({where:{itemId:params}})
-    .then(el=>res.status(200).json({data:el,message:"ok"}))
-    
+  get: (req, res) => {
+    const params = req.params.id;
+    console.log(params);
+    review.findAll({ where: { itemId: params } })
+      .then(el => res.status(200).json({ data: el, message: 'ok' }));
   },
   post: (req, res) => {
     const { userId, itemId, score, content } = req.body;
@@ -23,7 +22,7 @@ module.exports = {
       })
         .then(result => {
           console.log('===============review 추가완료===============');
-          res.redirect('/');
+          res.status(201).send('Success Add Review');
         }).catch(err => console.log(err));
     }
   },
@@ -63,6 +62,7 @@ module.exports = {
   delete: (req, res) => {
     review.destroy({ where: { id: req.params.id } })
       .then((result) => {
+        console.log('=============review 삭제 완료================');
         res.json({ data: result, message: 'Success Delete Review' });
       })
       .catch((err) => {

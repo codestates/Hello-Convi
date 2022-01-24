@@ -1,20 +1,65 @@
-const { item } = require('../models');
+const { user, item, review } = require('../models');
 const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
 
-module.exports = (req, res) => {
-  const query = req.query.itemid
+module.exports = async (req, res) => {
+  const query = req.query.itemid;
 
-  item.findAll({
-    where: {
-      name: {
-        [Op.like]: '%' + query + '%'
-      }
+  if (!query) {
+    const itemList = await item.findAll({
+      order: [[review, 'createdAt', 'DESC']],
+      include: [{ model: review, required: true }]
+    });
+    const recentItemList = itemList.slice(0, 5);
+    const payloadArray = [];
+    for (const recentitem of recentItemList) {
+      const recentreview = recentitem.reviews[0];
+      const recentnick = await user.findOne({
+        where: { id: recentreview.userId }
+      });
+
+      const payload = {
+        itemid: recentitem.id,
+        itemname: recentitem.name,
+        price: recentitem.price,
+        content: recentitem.content,
+        score: '2', // 평점 평균값  집어넣을것
+        photo: recentitem.img,
+        review: {
+          reviewid: recentreview.id,
+          nickname: recentnick.dataValues.nickname,
+          content: recentreview.content,
+          score: recentreview.score,
+          createdAt: recentreview.createdAt,
+          updatedAt: recentreview.updatedAt
+        }
+      };
+      payloadArray.push(payload);
     }
-  })
-    .then(result => {
-      res.json({ data: result, message: 'Found itemAll' });
-    }).catch(err => console.log(err));
+    res.json({ data: payloadArray });
+    // payload :
+    // for (el of itemlist){
+    //   item.
+    // }
+
+    // 우선 모든 리뷰를 조회해서
+    // 가장 최근 리뷰 5개를 따 오면
+    // 그 5개를 가지고 페이로드를 만들어서 레스폰스로 리턴
+    // l
+    // 일단 아이템과 리뷰 조인후
+    // 그룹화해서
+  } else {
+    item.findAll({
+      where: {
+        name: {
+          [Op.like]: '%' + query + '%'
+        }
+      }
+    })
+      .then(result => {
+        res.json({ data: result, message: 'Found itemAll' });
+      }).catch(err => console.log(err));
+  }
 };
 
 // 끝

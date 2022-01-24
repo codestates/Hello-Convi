@@ -57,15 +57,28 @@ module.exports = {
         updatedAt: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
       }
     ];
-
+    const reviews = [];
+    for (let i = 1; i < 6; i++) {
+      const obj = {
+        userId: i,
+        itemId: i,
+        score: i,
+        content: '별로야',
+        createdAt: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
+        updatedAt: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
+      };
+      reviews.push(obj);
+    }
     await queryInterface.bulkInsert('users', users, {});
     await queryInterface.bulkInsert('items', items, {});
     await queryInterface.bulkInsert('categories', category, {});
+    await queryInterface.bulkInsert('reviews', reviews, {});
   },
 
   async down (queryInterface, Sequelize) {
     await queryInterface.bulkDelete('users', null, {});
     await queryInterface.bulkDelete('items', null, {});
     await queryInterface.bulkDelete('categories', null, {});
+    await queryInterface.bulkDelete('reviews', null, {});
   }
 };
