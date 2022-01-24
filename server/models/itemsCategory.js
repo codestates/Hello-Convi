@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       // define association here
-      //itemsCategory.belongsTo(models.category);
-      //models.category.hasMany(itemsCategory);
-      //itemsCategory.belongsTo(models.item);
-      //models.item.hasMany(itemsCategory);
+      // itemsCategory.belongsTo(models.category);
+      // models.category.hasMany(itemsCategory);
+      // itemsCategory.belongsTo(models.item);
+      // models.item.hasMany(itemsCategory);
     }
   }
   itemsCategory.init({
