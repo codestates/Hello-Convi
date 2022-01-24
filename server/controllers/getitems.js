@@ -1,6 +1,7 @@
 const { user, item, review } = require('../models');
 const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
+// const {fn, col, where, literal} = require('sequelize')
 
 module.exports = async (req, res) => {
   const query = req.query.itemid;
@@ -11,20 +12,26 @@ module.exports = async (req, res) => {
     });
     // [{}{}]
     const recentItemList = itemList.slice(0, 5);
-    // res.json({data: recent_item_list}) //우선 하나만 받아오게
+    // res.json({data: recentItemList}) //우선 하나만 받아오게
     const payloadArray = [];
     for (const recentitem of recentItemList) {
       const recentreview = recentitem.reviews[0];
       const recentnick = await user.findOne({
         where: { id: recentreview.userId }
       });
+      let sumofscore = 0;
+      for (const rv of recentitem.reviews) {
+        sumofscore += rv.score;
+      }
+      let avgscore = sumofscore / recentitem.reviews.length;
+      avgscore = avgscore.toFixed(1);
 
       const payload = {
         itemid: recentitem.id,
         itemname: recentitem.name,
         price: recentitem.price,
         content: recentitem.content,
-        score: '2', // 평점 평균값  집어넣을것
+        score: avgscore, // 평점 평균값  집어넣을것
         photo: recentitem.img,
         review: {
           reviewid: recentreview.id,
