@@ -12,6 +12,7 @@ const dropout = require('./controllers/dropout');
 const signup = require('./controllers/signup');
 const review = require('./routes/review');
 const user = require('./routes/user');
+const check = require('./controllers/check');
 
 app.use(cors());
 app.use(express.json());
@@ -25,6 +26,7 @@ app.post('/signup', signup);
 app.delete('/dropout', dropout);
 app.use('/user', user);
 app.use('/review', review);
+app.use('/check', check);
 
 
 app.listen(port, () => {
