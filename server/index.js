@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.post('/login', login);
-app.post('/logout', logout);
+app.get('/logout', logout);
 app.get('/getitems/:word', getitems);
 app.post('/signup', signup);
 app.delete('/dropout', dropout);

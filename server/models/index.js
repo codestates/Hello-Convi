@@ -5,6 +5,11 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
+// Error: Cannot find module 'config/config.js'
+// 위 에러가 나면 아래에 코드의 경로를 바꿔야함
+// ex) ./config/config.js
+// ex) ../config/config.js
+// ex) ../../config/config.js
 const config = require(path.join('__dirname', '../../config/config.js'))[env];
 const db = {};
 

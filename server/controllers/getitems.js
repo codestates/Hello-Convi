@@ -13,9 +13,12 @@ module.exports = (req, res) => {
     }
   })
     .then(result => {
-      res.json(result);
-    });
+      res.json({ data: result, message: 'Found itemAll' });
+    }).catch(err => console.log(err));
 };
+
+// 끝
+
 /*
 [Op.and]: {a: 5}           // AND (a = 5)
 [Op.or]: [{a: 5}, {a: 6}]  // (a = 5 OR a = 6)
