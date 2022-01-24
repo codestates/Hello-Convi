@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import Search from '../components/Search';
 import Item from '../components/Item';
+import ReviewModal from '../components/ReviewModal';
 
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -23,9 +24,9 @@ function Main () {
   };
 
   return (
-    <div>
+    <div style={{ backgroundColor: '#EEE6C4' }}>
       <Search setSearchedItem={setSearchedItem} />
-      <button>리뷰작성</button>
+      <ReviewModal />
       <section>
         {/* 나중에 dummydata 대신에 searchedItem으로 렌더링 */}
         {dummyItems.map((item, idx) => {
