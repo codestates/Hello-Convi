@@ -99,7 +99,7 @@ function ReviewModal () {
     <ModalContainer>
       {/* 폰트어썸으로 */}
       <ModalBtn onClick={handleOpenModal}>
-         <FontAwesomeIcon className='icon' icon={faEdit} />
+        <FontAwesomeIcon className='icon' icon={faEdit} />
       </ModalBtn>
       {isOpen
         ? (

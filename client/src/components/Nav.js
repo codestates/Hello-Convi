@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { actionCreators } from '../store/store';
 import styled from 'styled-components';
-import { ReviewModal } from './index'
+import { ReviewModal } from './index';
 
 const Navi = styled.div`
 position: fixed;
@@ -33,7 +33,6 @@ const NavTap = styled.div`
   }
 }
 `;
-
 
 const LinkWrap = styled.div`
 display: flex;
