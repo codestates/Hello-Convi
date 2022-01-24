@@ -16,7 +16,7 @@ function Main () {
         {/* 나중에 dummydata 대신에 searchedItem으로 렌더링 */}
         {dummyItems.map((item, idx) => {
           return (          
-            <Link to='/iteminfo' key={idx}><Item item={item} /></Link>
+            <Link to='/Iteminfo' key={idx}><Item item={item} /></Link>
           )
         })}
       </section>      

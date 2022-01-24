@@ -1,4 +1,4 @@
-function itemInfo () {
+function ItemInfo () {
     return (
         <div>
             hi
@@ -6,4 +6,4 @@ function itemInfo () {
     )
 }
 
-export default itemInfo;
+export default ItemInfo;
