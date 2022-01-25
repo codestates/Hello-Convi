@@ -74,7 +74,7 @@ const scoreToStar = (score) => {
 
   for (let i = 1; i <= 5; i++) {
     if (i <= score) result.push(<FontAwesomeIcon className='yellowStar' icon={faStar} />);
-    else if(i > score) result.push(<FontAwesomeIcon className='faStar' icon={faStar} />);
+    else if (i > score) result.push(<FontAwesomeIcon className='faStar' icon={faStar} />);
   }
 
   return result;
@@ -99,7 +99,7 @@ function Item ({ item }) {
           <ReviewInfo>
             <span className='nickname'>{review.nickname}</span>
             <span className='starContainer'>{scoreToStar(review.score).map(el => {
-              //console.log(el);
+              // console.log(el);
               return el;
             })}
             </span>
