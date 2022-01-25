@@ -24,7 +24,7 @@ const Searchbtn = styled.button`
 `;
 const SearchInput = styled.input`
   box-sizing: border-box;
-  padding: 0 40px 0 10px;
+  padding: 0 0 0 10px;
   width: 400px;
   height: 50px;
   border: 3px solid #34495E;
