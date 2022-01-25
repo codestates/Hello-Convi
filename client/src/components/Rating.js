@@ -63,7 +63,6 @@ const Rating = ({ setStars }) => {
               console.log(el);
               setStars(el);
               setClicked(el);
-              
             }}
           />
         ))}
