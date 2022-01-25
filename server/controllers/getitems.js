@@ -2,7 +2,6 @@ const { user, item, review } = require('../models');
 const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
 
-
 module.exports = async (req, res) => {
   const query = req.query.itemid;
   if (!query) {
