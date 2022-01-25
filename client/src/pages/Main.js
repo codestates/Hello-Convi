@@ -13,7 +13,9 @@ const MainWrap = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  padding-top: 50px;
+  
 `;
 
 const SectionWrap = styled.section`
@@ -38,7 +40,6 @@ function Main () {
       <img src='/images/logo3.png' alt='logo' />
       <Search setSearchedItem={setSearchedItem} />
       <SectionWrap>
-        {/* 나중에 dummydata 대신에 searchedItem으로 렌더링 */}
         {searchedItem.map((item, idx) => {
           return (
             <div key={idx} onClick={(event) => handleOnClick(event, item)}>
