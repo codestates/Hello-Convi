@@ -77,7 +77,7 @@ const scoreToStar = (score) => {
 
   for (let i = 1; i <= 5; i++) {
     if (i <= score) result.push(<FontAwesomeIcon className='yellowStar' icon={faStar} />);
-    else result.push(<FontAwesomeIcon className='faStar' icon={faStar} />);
+    else if (i > score) result.push(<FontAwesomeIcon className='faStar' icon={faStar} />);
   }
 
   return result;

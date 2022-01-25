@@ -61,8 +61,8 @@ const Rating = ({ setStars }) => {
             onMouseLeave={() => setHovered(null)}
             onClick={() => {
               console.log(el);
-              setStars(el);
               setClicked(el);
+              setStars(el);
             }}
           />
         ))}
