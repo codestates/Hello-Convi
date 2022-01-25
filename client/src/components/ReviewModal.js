@@ -159,12 +159,12 @@ function ReviewModal () {
 
     const reviewContent = event.target[0].value;
 
-    console.log(choice, reviewContent, userInfo.nickname);
+    console.log(choice, reviewContent, userInfo.userId);
 
     axios.post('http://localhost:8080/review', {
       itemId: choice,
       content: reviewContent,
-      userId: userInfo.nickname,
+      userId: userInfo.userId,
       score: '5'
     }, config).then((res) => {
       setIsOpen(!isOpen);
