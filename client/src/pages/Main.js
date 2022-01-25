@@ -1,4 +1,4 @@
-import dummyItems from '../dummy/dummyItems';
+// import dummyItems from '../dummy/dummyItems';
 import { useState } from 'react';
 import Search from '../components/Search';
 import Item from '../components/Item';
@@ -39,7 +39,7 @@ function Main () {
       <Search setSearchedItem={setSearchedItem} />
       <SectionWrap>
         {/* 나중에 dummydata 대신에 searchedItem으로 렌더링 */}
-        {dummyItems.map((item, idx) => {
+        {searchedItem.map((item, idx) => {
           return (
             <div key={idx} onClick={(event) => handleOnClick(event, item)}>
               <Item item={item} />

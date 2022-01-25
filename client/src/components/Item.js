@@ -68,6 +68,9 @@ const ReviewInfo = styled.div`
     opacity: 1;
   }
 `;
+// const scoretostar = (score) => { // 10000 11000 11100 11110 11111
+//   return `${score}star`;
+// };
 
 const scoreToStar = (score) => {
   const result = [];
@@ -98,11 +101,7 @@ function Item ({ item }) {
           <div>{review.content}</div>
           <ReviewInfo>
             <span className='nickname'>{review.nickname}</span>
-            <span className='starContainer'>{scoreToStar(review.score).map(el => {
-              // console.log(el);
-              return el;
-            })}
-            </span>
+            <span>{scoreToStar(review.score)}</span>
           </ReviewInfo>
         </ReviewWrap>
       </SectionWrap>
