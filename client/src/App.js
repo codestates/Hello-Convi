@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Main, Login, SignUp, ItemInfo, MyPage } from './pages';
+import { Main, Login, SignUp, ItemInfo, MyPage, MyPageEdit } from './pages';
 import Nav from './components/Nav';
 
 function App () {
@@ -13,6 +13,7 @@ function App () {
           <Route path='/signup' element={<SignUp />} />
           <Route path='/iteminfo' element={<ItemInfo />} />
           <Route path='/mypage' element={<MyPage />} />
+          <Route path='/mypage/edit' element={<MyPageEdit />} />
         </Routes>
 
       </BrowserRouter>

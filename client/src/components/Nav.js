@@ -69,6 +69,7 @@ function Nav () {
                 <ReviewModal />
                 <span onClick={logoutHandler} className='btn'>Logout&nbsp;&nbsp;</span>
                 <Link to='/mypage' className='btn'>MyPage</Link>
+                <Link to='/mypage/edit' className='btn'>MyPageEdit</Link>
               </LoginWrap>
               )
             : (
