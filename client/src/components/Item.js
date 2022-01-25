@@ -65,7 +65,6 @@ const ReviewInfo = styled.div`
 
   .yellowStar {
     color: orange;
-    opacity: 1;
   }
 `;
 // const scoretostar = (score) => { // 10000 11000 11100 11110 11111

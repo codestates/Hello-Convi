@@ -10,7 +10,7 @@ import Rating from './Rating';
 
 const ModalBackDrop = styled.div`
     position : fixed;
-    z-index : 999;
+    z-index : 100;
     top : 0;
     left : 0;
     bottom : 0;
@@ -52,9 +52,10 @@ const ModalView = styled.div`
     }
 
     .img {
-      height: 150px;
-      width: 350px;
+      height: 200px;
+      width: 500px;
       margin-bottom: 10px;
+      margin-right: 50px;
     }
 `;
 
@@ -187,7 +188,7 @@ function ReviewModal () {
           <ModalBackDrop onClick={handleOpenModal}>
             <ModalView onClick={(event) => event.stopPropagation()}>
               <span className='close_btn' onClick={handleOpenModal}>&times;</span>
-              <img className='img' src='images/logo3.png' alt='logo' />
+              <img src='images/logo3.png' alt='logo' className='img' />
               <Search setSearchedItem={setSearchedItem} />
               {/* default는 curItemInfo.itemname으로 */}
               <SelectBox>
