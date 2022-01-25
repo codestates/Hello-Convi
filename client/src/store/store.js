@@ -8,6 +8,7 @@ const reducer = createReducer({
   userInfo: {
     auth: false,
     email: '',
+    userId: '',
     nickname: ''
   },
   curItemInfo: {
@@ -28,6 +29,7 @@ const reducer = createReducer({
   [login]: (state, action) => {
     state.userInfo.auth = true;
     state.userInfo.email = action.payload.email;
+    state.userInfo.userId = action.payload.userId;
     state.userInfo.nickname = action.payload.nickname;
   },
   [logout]: (state, action) => {

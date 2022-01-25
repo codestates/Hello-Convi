@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
 
 module.exports = async (req, res) => {
-  const query = req.query.itemid;
+  const query = req.query.items;
   if (!query) {
     const itemList = await item.findAll({
       order: [[review, 'createdAt', 'DESC']],
@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
         itemname: recentitem.name,
         price: recentitem.price,
         content: recentitem.content,
-        score: avgscore,
+        score: avgscore, 
         photo: recentitem.img,
         review: {
           reviewid: recentreview.id,
