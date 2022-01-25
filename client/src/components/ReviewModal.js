@@ -51,7 +51,7 @@ const ModalView = styled.div`
         cursor : pointer;        
     }
 
-    img {
+    .img {
       height: 150px;
       width: 350px;
       margin-bottom: 10px;
@@ -187,7 +187,7 @@ function ReviewModal () {
           <ModalBackDrop onClick={handleOpenModal}>
             <ModalView onClick={(event) => event.stopPropagation()}>
               <span className='close_btn' onClick={handleOpenModal}>&times;</span>
-              <img src='images/logo3.png' alt='logo' />
+              <img  className= 'img' src='images/logo3.png' alt='logo' />
               <Search setSearchedItem={setSearchedItem} />
               {/* default는 curItemInfo.itemname으로 */}
               <SelectBox>

@@ -4,7 +4,7 @@ const Op = Sequelize.Op;
 // const {fn, col, where, literal} = require('sequelize')
 
 module.exports = async (req, res) => {
-  const query = req.query.items;
+  const query = req.query.search;
   if (!query) {
     const itemList = await item.findAll({
       order: [[review, 'createdAt', 'DESC']],
@@ -47,14 +47,74 @@ module.exports = async (req, res) => {
     res.json({ data: payloadArray });
   } else {
     item.findAll({
+      include: [{ model: review }],
+      order: [[review, 'createdAt', 'DESC']],
       where: {
         name: {
           [Op.like]: '%' + query + '%'
         }
       }
-    })
-      .then(result => {
-        res.json({ data: result, message: 'Found itemAll' });
+    })//query 가 있는경우 
+      .then(async (result) => {
+        const searcheditemarray = []
+        for (let item of result){
+          const itemreview = item.reviews[0]//해당 아이템의 가장 최근 리뷰 
+          if(!itemreview){
+            const payload = {
+              itemid: item.id,
+              itemname: item.name,
+              price: item.price,
+              content: item.content,
+              score: '',
+              photo: item.img,
+              review: {
+                reviewid: '',
+                nickname: '',
+                content: '',
+                score: '',
+                createdAt: '',
+                updatedAt: ''
+              }
+            };
+            searcheditemarray.push(payload)
+
+          }
+          else{
+            const recentnick = await user.findOne({
+              where: { id: itemreview.userId }
+            });
+            let sumofscore = 0;
+            for (const rv of item.reviews) {
+              sumofscore += rv.score;
+            }
+            let avgscore = sumofscore / item.reviews.length;
+            avgscore = avgscore.toFixed(1);
+            const payload = {
+              itemid: item.id,
+              itemname: item.name,
+              price: item.price,
+              content: item.content,
+              score: avgscore,
+              photo: item.img,
+              review: {
+                reviewid: itemreview.id,
+                nickname: recentnick.dataValues.nickname,
+                content: itemreview.content,
+                score: itemreview.score,
+                createdAt: itemreview.createdAt,
+                updatedAt: itemreview.updatedAt
+              }
+            };
+            searcheditemarray.push(payload)
+            
+          }
+          
+          
+          
+
+
+        }
+        res.json({ data: searcheditemarray, message: 'Found itemAll' });
       }).catch(err => console.log(err));
   }
 };
