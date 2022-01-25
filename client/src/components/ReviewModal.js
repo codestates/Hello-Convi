@@ -191,7 +191,7 @@ function ReviewModal () {
               <Search setSearchedItem={setSearchedItem} />
               {/* default는 curItemInfo.itemname으로 */}
               <SelectBox>
-                <Rating className='stars' stars={setStars} />
+                <Rating setStars={setStars} />
                 <select onChange={handleOptionChg}>
                   {/* {searchedItem.map((item, idx) => {
                               return <option value={item.itemname}></option>

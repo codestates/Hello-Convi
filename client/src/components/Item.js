@@ -57,6 +57,9 @@ const ReviewInfo = styled.div`
     width: 50%;
   }
 `;
+const scoretostar = (score) => { // 10000 11000 11100 11110 11111
+  return `${score}star`;
+};
 
 function Item ({ item }) {
   const review = item.review;
@@ -76,7 +79,7 @@ function Item ({ item }) {
           <div>{review.content}</div>
           <ReviewInfo>
             <span className='nickname'>{review.nickname}</span>
-            <span>{review.score}</span>
+            <span>{scoretostar(review.score)}</span>
           </ReviewInfo>
         </ReviewWrap>
       </SectionWrap>
