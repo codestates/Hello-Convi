@@ -152,7 +152,7 @@ function Login () {
   return (
     <LoginWrap>
       <LoginContainer>
-        <img src='/images/logo.png' alt='logo' className='img'/>
+        <img src='/images/logo.png' alt='logo' className='img' />
         <InputWrap>
           <LoginInput type='email' placeholder='email' onChange={handleInput} />
           <LoginInput type='password' placeholder='password' onChange={handleInput} />
