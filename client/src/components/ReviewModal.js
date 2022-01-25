@@ -139,7 +139,7 @@ function ReviewModal () {
   const [isOpen, setIsOpen] = useState(false);
   const [searchedItem, setSearchedItem] = useState([]);
   const [choice, setChoice] = useState('');
-  const [stars, setStars] = useState(1)
+  const [stars, setStars] = useState(1);
   // const [reviewContent, setReviewContent] = useState('');
 
   const { userInfo, curItemInfo } = useSelector(state => state);
@@ -166,7 +166,7 @@ function ReviewModal () {
       itemId: choice,
       content: reviewContent,
       userId: userInfo.userId,
-      score: stars,
+      score: stars
     }, config).then((res) => {
       setIsOpen(!isOpen);
     }).catch(console.log);
@@ -191,7 +191,7 @@ function ReviewModal () {
               <Search setSearchedItem={setSearchedItem} />
               {/* default는 curItemInfo.itemname으로 */}
               <SelectBox>
-                <Rating className='stars' stars={setStars}/>
+                <Rating className='stars' stars={setStars} />
                 <select onChange={handleOptionChg}>
                   {/* {searchedItem.map((item, idx) => {
                               return <option value={item.itemname}></option>

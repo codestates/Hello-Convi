@@ -14,6 +14,7 @@ function App () {
           <Route path='/iteminfo' element={<ItemInfo />} />
           <Route path='/mypage' element={<MyPage />} />
         </Routes>
+
       </BrowserRouter>
     </div>
   );
