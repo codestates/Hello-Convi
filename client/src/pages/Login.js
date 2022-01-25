@@ -24,8 +24,8 @@ const LoginContainer = styled.div`
   flex-direction: column;
   border-radius: 10px;
   border: 2px solid #F1F1F1;
-  img {
-    height: 200px;
+  .img {
+    height: 250px;
   }
   div {
     width: 100%;
@@ -151,7 +151,7 @@ function Login () {
   return (
     <LoginWrap>
       <LoginContainer>
-        <img src='/images/logo.png' alt='logo' />
+        <img src='/images/logo.png' alt='logo' className='img' />
         <InputWrap>
           <LoginInput type='email' placeholder='email' onChange={handleInput} />
           <LoginInput type='password' placeholder='password' onChange={handleInput} />
