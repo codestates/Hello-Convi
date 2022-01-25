@@ -4,7 +4,7 @@ const Op = Sequelize.Op;
 // const {fn, col, where, literal} = require('sequelize')
 
 module.exports = async (req, res) => {
-  const query = req.query.itemid;
+  const query = req.query.items;
   if (!query) {
     const itemList = await item.findAll({
       order: [[review, 'createdAt', 'DESC']],
@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
         itemname: recentitem.name,
         price: recentitem.price,
         content: recentitem.content,
-        score: avgscore, // 평점 평균값  집어넣을것
+        score: avgscore, 
         photo: recentitem.img,
         review: {
           reviewid: recentreview.id,
@@ -45,17 +45,7 @@ module.exports = async (req, res) => {
       payloadArray.push(payload);
     }
     res.json({ data: payloadArray });
-    // payload :
-    // for (el of itemlist){
-    //   item.
-    // }
 
-    // 우선 모든 리뷰를 조회해서
-    // 가장 최근 리뷰 5개를 따 오면
-    // 그 5개를 가지고 페이로드를 만들어서 레스폰스로 리턴
-    // l
-    // 일단 아이템과 리뷰 조인후
-    // 그룹화해서
   } else {
     item.findAll({
       where: {
