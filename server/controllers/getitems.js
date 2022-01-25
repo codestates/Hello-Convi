@@ -65,16 +65,9 @@ module.exports = async (req, res) => {
               itemname: item.name,
               price: item.price,
               content: item.content,
-              score: '',
+              score: null,
               photo: item.img,
-              review: {
-                reviewid: '',
-                nickname: '',
-                content: '',
-                score: '',
-                createdAt: '',
-                updatedAt: ''
-              }
+              review: null
             };
             searcheditemarray.push(payload);
           } else {
