@@ -28,7 +28,7 @@ const StarContainer = styled.div`
   background-color: white;
 `;
 
-const Rating = () => {
+const Rating = ( { setStars } ) => {
   const [hovered, setHovered] = useState(null);
   const [clicked, setClicked] = useState(null);
 
@@ -62,6 +62,8 @@ const Rating = () => {
             onClick={() => {
               console.log(el);
               setClicked(el);
+              setStars(el);
+              
             }}
           />
         ))}
