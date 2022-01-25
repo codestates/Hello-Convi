@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
         itemname: recentitem.name,
         price: recentitem.price,
         content: recentitem.content,
-        score: avgscore, 
+        score: avgscore,
         photo: recentitem.img,
         review: {
           reviewid: recentreview.id,
