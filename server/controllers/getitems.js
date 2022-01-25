@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
         itemname: recentitem.name,
         price: recentitem.price,
         content: recentitem.content,
-        score: avgscore, 
+        score: avgscore,
         photo: recentitem.img,
         review: {
           reviewid: recentreview.id,
@@ -45,7 +45,6 @@ module.exports = async (req, res) => {
       payloadArray.push(payload);
     }
     res.json({ data: payloadArray });
-
   } else {
     item.findAll({
       where: {
