@@ -65,7 +65,7 @@ function Item ({ item }) {
     <ItemWrap>
       <ImgWrap>
         <img src='/images/logo2.png' alt='logo' />
-        <span>4.8</span>
+        <span>{item.score}</span>
       </ImgWrap>
       <SectionWrap>
         <ItemInfoWrap>
@@ -73,7 +73,7 @@ function Item ({ item }) {
           <h3 className='itemprice'>{item.price}</h3>
         </ItemInfoWrap>
         <ReviewWrap>
-          <div>adgffdgdgdgdgfdgdgdgdgsdgsdgsdgsdggdfgdfgdfgdfgdfgdfgdfgdgdgㄶ</div>
+          <div>{review.content}</div>
           <ReviewInfo>
             <span className='nickname'>{review.nickname}</span>
             <span>{review.score}</span>
