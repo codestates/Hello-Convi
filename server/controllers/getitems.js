@@ -2,9 +2,9 @@ const { user, item, review } = require('../models');
 const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
 
+
 module.exports = async (req, res) => {
   const query = req.query.itemid;
-
   if (!query) {
     const itemList = await item.findAll({
       order: [[review, 'createdAt', 'DESC']],
@@ -17,17 +17,23 @@ module.exports = async (req, res) => {
       const recentnick = await user.findOne({
         where: { id: recentreview.userId }
       });
+      let sumofscore = 0;
+      for (const rv of recentitem.reviews) {
+        sumofscore += rv.score;
+      }
+      let avgscore = sumofscore / recentitem.reviews.length;
+      avgscore = avgscore.toFixed(1);
 
       const payload = {
         itemid: recentitem.id,
         itemname: recentitem.name,
         price: recentitem.price,
         content: recentitem.content,
-        score: '2', // 평점 평균값  집어넣을것
+        score: avgscore,
         photo: recentitem.img,
         review: {
           reviewid: recentreview.id,
-          nickname: recentnick.nickname,
+          nickname: recentnick.dataValues.nickname,
           content: recentreview.content,
           score: recentreview.score,
           createdAt: recentreview.createdAt,
