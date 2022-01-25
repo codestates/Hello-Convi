@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-
 const ItemWrap = styled.div`
   display: flex;
   width: 490px;
@@ -73,13 +72,13 @@ const ReviewInfo = styled.div`
 const scoreToStar = (score) => {
   const result = [];
 
-  for(let i=1;i<=5;i++) {
-    if(i<=score) result.push(<FontAwesomeIcon className='yellowStar' icon={faStar} />)
-    else result.push(<FontAwesomeIcon className='faStar' icon={faStar} />)
+  for (let i = 1; i <= 5; i++) {
+    if (i <= score) result.push(<FontAwesomeIcon className='yellowStar' icon={faStar} />);
+    else result.push(<FontAwesomeIcon className='faStar' icon={faStar} />);
   }
 
   return result;
-}
+};
 
 function Item ({ item }) {
   const review = item.review;
@@ -101,7 +100,9 @@ function Item ({ item }) {
             <span className='nickname'>{review.nickname}</span>
             <span>{scoreToStar(review.score).map(el => {
               console.log(el);
-              return el})}</span>
+              return el;
+            })}
+            </span>
           </ReviewInfo>
         </ReviewWrap>
       </SectionWrap>
