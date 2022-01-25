@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import Search from './Search';
-import dummyItems from '../dummy/dummyItems';
+// import dummyItems from '../dummy/dummyItems';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import Rating from './Rating';
@@ -197,7 +197,7 @@ function ReviewModal () {
                               return <option value={item.itemname}></option>
                           })} */}
                   <option>-- 상품 --</option>
-                  {dummyItems.map((item, idx) => {
+                  {searchedItem.map((item, idx) => {
                     if (item.itemid === curItemInfo.itemid) return <option key={idx} value={item.itemname} selected>{item.itemname}</option>;
                     return <option key={idx} value={item.itemid}>{item.itemname}</option>;
                   })}
