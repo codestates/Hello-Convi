@@ -3,7 +3,7 @@ import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { actionCreators } from '../store/store';
 import styled from 'styled-components';
 import { ReviewModal } from './index';
-import axios from 'axios'
+import axios from 'axios';
 const Navi = styled.header`
 position: fixed;
 top: 0;
