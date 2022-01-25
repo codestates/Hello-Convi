@@ -22,7 +22,7 @@ module.exports = {
       })
         .then(result => {
           console.log('===============review 추가완료===============');
-          res.redirect('/');
+          res.status(200).redirect('/');
         }).catch(err => console.log(err));
     }
   },
