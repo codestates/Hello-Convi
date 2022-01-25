@@ -29,8 +29,9 @@ const SearchInput = styled.input`
   padding: 0 0 0 10px;
   width: 400px;
   height: 50px;
-  border: 3px solid #34495E;
-  border-radius: 0;
+  border: 0.1px solid #34495E;
+  box-shadow: 0px 4px 10px #34495E;
+  border-radius: 15px;
   background: none;
   font-size: 16px;
   font-weight: 400;

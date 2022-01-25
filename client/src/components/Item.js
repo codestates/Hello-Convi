@@ -2,15 +2,21 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
+// export const shadow = '0px 4px 10px rgba(0, 0, 0, 0.1)';
+// export const hover = '0px 4px 10px rgba(0, 0, 0, 0.25)';
+
 const ItemWrap = styled.div`
   display: flex;
   width: 490px;
-  border: 3px solid #34495E;
+  box-shadow: 0px 4px 10px #34495E;
+  border-radius: 15px;
   margin-bottom: 15px;
-  &:hover,:focus {
-      cursor: pointer;
-      outline: none;
-      transform: scale(1.05);
+  cursor: pointer;
+  transition: 0.1s;
+  &:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    transition: 0.1s;
   }
 `;
 const ImgWrap = styled.div`
@@ -36,7 +42,7 @@ const ItemInfoWrap = styled.div`
     width: 50%;
   }
   h3 {
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 5px;
   }
 `;
@@ -53,7 +59,7 @@ const ReviewWrap = styled.div`
 
 const ReviewInfo = styled.div`
   display: flex;
-  align-items: flex-end;
+  margin-top: 28px;
   height: 10%;
   .nickname {
     width: 50%;
@@ -88,7 +94,7 @@ function Item ({ item }) {
   return (
     <ItemWrap>
       <ImgWrap>
-        <img src='/images/logo2.png' alt='logo' />
+        <img src='/images/logo3.png' alt='logo' />
         {item.score ? <span>{item.score}</span> : null}
       </ImgWrap>
       <SectionWrap>
