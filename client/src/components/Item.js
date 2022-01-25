@@ -90,20 +90,25 @@ function Item ({ item }) {
     <ItemWrap>
       <ImgWrap>
         <img src='/images/logo2.png' alt='logo' />
-        <span>{item.score}</span>
+        {item.score ? <span>{item.score}</span> : null}
       </ImgWrap>
       <SectionWrap>
         <ItemInfoWrap>
           <h3 className='itemname'>{item.itemname}</h3>
           <h3 className='itemprice'>{item.price}</h3>
         </ItemInfoWrap>
-        <ReviewWrap>
-          <div>{review.content}</div>
-          <ReviewInfo>
-            <span className='nickname'>{review.nickname}</span>
-            <span>{scoreToStar(review.score)}</span>
-          </ReviewInfo>
-        </ReviewWrap>
+        {item.review
+          ? (
+          <ReviewWrap>
+            <div>{review.content}</div>
+            <ReviewInfo>
+              <span className='nickname'>{review.nickname}</span>
+              <span>{scoreToStar(review.score)}</span>
+            </ReviewInfo>
+          </ReviewWrap>)
+          : (
+            <div>리뷰가 없습니다.</div>
+            )}
       </SectionWrap>
     </ItemWrap>
   );
