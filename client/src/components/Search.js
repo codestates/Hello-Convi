@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 const SearchWrap = styled.form`
   display: flex;
@@ -37,8 +38,21 @@ const SearchInput = styled.input`
 
 function Search ({ setSearchedItem }) {
   // 검색하면 검색창 비우기 나중 추가
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    withCredentials: true
+  };
+
   useEffect(() => {
     // axios
+    axios.get('http://localhost:8080/getitems', config)
+      .then(res => {
+        setSearchedItem(res.data.data);
+        console.log(res.data.data);
+      });
+    // console.log(itemlist)
   }, []);
 
   const onSubmitHandler = (event) => {
