@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
-
 const ReviewBox = styled.div`
   padding: 30px;
   color: #999;
@@ -29,18 +28,17 @@ const StarContainer = styled.div`
   background-color: white;
 `;
 
-
-const Rating = () => {
+const Rating = ( { setStars } ) => {
   const [hovered, setHovered] = useState(null);
   const [clicked, setClicked] = useState(null);
-  
+
   // const goToAxios = e => {
   //   setClicked(e.target.id);
-  //     //사용할 http 메소드 
+  //     //사용할 http 메소드
   //     method: 'POST',
   //     //토큰
   //     headers: {
-  //       Authorization: 
+  //       Authorization:
   //     },
   //     //서버에 보낼 데이터 (별점)
   //     body: JSON.stringify({
@@ -53,7 +51,8 @@ const Rating = () => {
     <ReviewBox>
       <StarContainer>
         {[1, 2, 3, 4, 5].map(el => (
-          <FontAwesomeIcon className='icon' icon={faStar} 
+          <FontAwesomeIcon
+            className='icon' icon={faStar}
             className={`faStar ${
               (clicked >= el) | (hovered >= el) && 'yellowStar'
             }`}
@@ -61,9 +60,10 @@ const Rating = () => {
             onMouseEnter={() => setHovered(el)}
             onMouseLeave={() => setHovered(null)}
             onClick={() => {
-              console.log(el)
-              setClicked(el) 
-            }}   
+              console.log(el);
+              setStars(el)
+              setClicked(el);
+            }}
           />
         ))}
       </StarContainer>
@@ -73,4 +73,4 @@ const Rating = () => {
 
 export default Rating;
 
-//style-component 사용
+// style-component 사용

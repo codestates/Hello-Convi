@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import Rating from './Rating';
 
-
 const ModalBackDrop = styled.div`
     position : fixed;
     z-index : 999;
@@ -93,7 +92,7 @@ const SelectBox = styled.div`
       outline: none;
      }
     }
-`
+`;
 
 const FormBox = styled.form`
   display: flex;
@@ -127,7 +126,7 @@ const FormBox = styled.form`
       background-color: white;
     }
   }
-`
+`;
 
 function ReviewModal () {
   const config = {
@@ -140,6 +139,7 @@ function ReviewModal () {
   const [isOpen, setIsOpen] = useState(false);
   const [searchedItem, setSearchedItem] = useState([]);
   const [choice, setChoice] = useState('');
+  const [stars, setStars] = useState(1)
   // const [reviewContent, setReviewContent] = useState('');
 
   const { userInfo, curItemInfo } = useSelector(state => state);
@@ -166,7 +166,7 @@ function ReviewModal () {
       itemId: choice,
       content: reviewContent,
       userId: userInfo.userId,
-      score: '5'
+      score: stars,
     }, config).then((res) => {
       setIsOpen(!isOpen);
     }).catch(console.log);
@@ -187,11 +187,11 @@ function ReviewModal () {
           <ModalBackDrop onClick={handleOpenModal}>
             <ModalView onClick={(event) => event.stopPropagation()}>
               <span className='close_btn' onClick={handleOpenModal}>&times;</span>
-              <img src='images/logo3.png' alt='logo'/>
+              <img src='images/logo3.png' alt='logo' />
               <Search setSearchedItem={setSearchedItem} />
               {/* default는 curItemInfo.itemname으로 */}
               <SelectBox>
-                <Rating className='stars' />
+                <Rating className='stars' stars={setStars}/>
                 <select onChange={handleOptionChg}>
                   {/* {searchedItem.map((item, idx) => {
                               return <option value={item.itemname}></option>
