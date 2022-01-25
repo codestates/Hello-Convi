@@ -6,6 +6,8 @@ import Search from './Search';
 import dummyItems from '../dummy/dummyItems';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import Rating from './Rating';
+
 
 const ModalBackDrop = styled.div`
     position : fixed;
@@ -40,12 +42,92 @@ const ModalView = styled.div`
     background-color : #ffffff;
     width : 40rem;
     height : 50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    > div.close_btn {
+    .close_btn {
         margin-top : 5px;
+        padding-left: 600px;
         cursor : pointer;        
     }
+
+    img {
+      height: 150px;
+      width: 350px;
+      margin-bottom: 10px;
+    }
 `;
+
+const SelectBox = styled.div`
+  margin-top: -20px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+
+
+  select {
+    appearance: none;
+    -moz-appearance: none; /* Firefox */ 
+    -webkit-appearance: none; /* Safari and Chrome */
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    
+    color: #444;
+    background-color: #fff;
+    
+    height: 40px;
+    width: 100px;
+    padding-left : 20px;
+    margin-left: 135px;
+    
+    border: 1px solid #aaa;
+    border-radius: .5em;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    &:hover,:focus {
+      border-color: #34495E;
+      box-shadow: 0 0 1px 1px #34495E;
+      box-shadow: 0 0 0 3px -moz-mac-focusring;
+      color: #34495E;
+      outline: none;
+     }
+    }
+`
+
+const FormBox = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  textarea {
+    resize: none;
+    border: solid 2px #34495E;
+    width: 89%;
+    height: 300px;
+    font-size: 16px;
+    padding: 10px;
+  }
+  button {
+    width: 100px;
+    height: 2.5rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #34495E;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1em;
+    transition: all 0.5s;
+    margin-left: 300px;
+    margin-top: 20px;
+    &:hover,:focus {
+      cursor: pointer;
+      outline: none;
+      transform: scale(1.05);
+      color: #34495E;;
+      background-color: white;
+    }
+  }
+`
 
 function ReviewModal () {
   const config = {
@@ -97,7 +179,6 @@ function ReviewModal () {
 
   return (
     <ModalContainer>
-      {/* 폰트어썸으로 */}
       <ModalBtn onClick={handleOpenModal}>
         <FontAwesomeIcon className='icon' icon={faEdit} />
       </ModalBtn>
@@ -106,26 +187,27 @@ function ReviewModal () {
           <ModalBackDrop onClick={handleOpenModal}>
             <ModalView onClick={(event) => event.stopPropagation()}>
               <span className='close_btn' onClick={handleOpenModal}>&times;</span>
-              {/* search components로 */}
+              <img src='images/logo3.png' alt='logo'/>
               <Search setSearchedItem={setSearchedItem} />
-              {/* option 태그로 */}
               {/* default는 curItemInfo.itemname으로 */}
-              <select onChange={handleOptionChg}>
-                {/* {searchedItem.map((item, idx) => {
-                            return <option value={item.itemname}></option>
-                        })} */}
-                <option>물건 고르기</option>
-                {dummyItems.map((item, idx) => {
-                  if (item.itemid === curItemInfo.itemid) return <option key={idx} value={item.itemname} selected>{item.itemname}</option>;
-                  return <option key={idx} value={item.itemid}>{item.itemname}</option>;
-                })}
-              </select>
-              <div>score</div>
-              <form onSubmit={handleSubmit}>
+              <SelectBox>
+                <Rating className='stars' />
+                <select onChange={handleOptionChg}>
+                  {/* {searchedItem.map((item, idx) => {
+                              return <option value={item.itemname}></option>
+                          })} */}
+                  <option>-- 상품 --</option>
+                  {dummyItems.map((item, idx) => {
+                    if (item.itemid === curItemInfo.itemid) return <option key={idx} value={item.itemname} selected>{item.itemname}</option>;
+                    return <option key={idx} value={item.itemid}>{item.itemname}</option>;
+                  })}
+                </select>
+              </SelectBox>
+              <FormBox onSubmit={handleSubmit}>
                 <textarea placeholder='리뷰를 남겨보세요' />
                 {/* 요청보내기      */}
                 <button>리뷰작성</button>
-              </form>
+              </FormBox>
             </ModalView>
           </ModalBackDrop>
           )
