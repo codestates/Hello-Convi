@@ -1,4 +1,4 @@
-import dummyItems from '../dummy/dummyItems';
+// import dummyItems from '../dummy/dummyItems';
 import { useState } from 'react';
 import Search from '../components/Search';
 import Item from '../components/Item';
