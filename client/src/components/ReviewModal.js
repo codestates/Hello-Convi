@@ -51,7 +51,7 @@ const ModalView = styled.div`
         cursor : pointer;        
     }
 
-    > .img {
+    .img {
       height: 150px;
       width: 350px;
       margin-bottom: 10px;
