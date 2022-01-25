@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { actionCreators } from '../store/store';
 import styled from 'styled-components';
-//import dummyItems from '../dummy/dummyItems';
+// import dummyItems from '../dummy/dummyItems';
 
 const MainWrap = styled.div`
   display: flex;
