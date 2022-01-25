@@ -99,13 +99,13 @@ function Item ({ item }) {
         </ItemInfoWrap>
         {item.review
           ? (
-          <ReviewWrap>
-            <div>{review.content}</div>
-            <ReviewInfo>
-              <span className='nickname'>{review.nickname}</span>
-              <span>{scoreToStar(review.score)}</span>
-            </ReviewInfo>
-          </ReviewWrap>)
+            <ReviewWrap>
+              <div>{review.content}</div>
+              <ReviewInfo>
+                <span className='nickname'>{review.nickname}</span>
+                <span>{scoreToStar(review.score)}</span>
+              </ReviewInfo>
+            </ReviewWrap>)
           : (
             <div>리뷰가 없습니다.</div>
             )}
