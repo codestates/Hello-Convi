@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 // import dummyItem1Reviews from '../dummy/item1Reviews';
 import Review from '../components/Review';
+import ReviewModal from '../components/ReviewModal';
 
 function ItemInfo () {
   const config = {
@@ -27,13 +28,13 @@ function ItemInfo () {
     //   setIsErr(err);
     // });
   }, []);
-
   // console.log(curItemInfo);
+
   return (
-    <div>
+    <div style={{ backgroundColor: '#EEE6C4' }}>
       {/* advanced : iteminfo의 search 요소는 추후 모달 방식 이용하여 추가 */}
       {/* <Search setSearchedItem={setSearchedItem}/> */}
-      <button>리뷰작성</button>
+      <ReviewModal />
       <div>
         <div>{curItemInfo.photo}</div>
         <div>

@@ -1,6 +1,74 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const SignUpWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: whitesmoke;
+`;
+
+const SignUpContainer = styled.div`
+  width: 300px;
+  height: 500px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 2px solid #F1F1F1;
+  img {
+    height: 200px;
+  }
+`;
+
+const InputWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 10px;
+  text-align: center;
+  span {
+    font-size: 8px;
+    color: red;
+    margin-bottom: 2px;
+  }
+  span.green {
+    color: green;
+  }
+`;
+
+const SignUpInput = styled.input`
+  border: 2px solid #F1F1F1;
+  border-radius: 7px;
+  height: 40px;
+  width: 250px;
+  font-size: 16px;
+`;
+
+const SignUpButton = styled.button`
+    width: 70%;
+    height: 2.5rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #9e9e9e;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1em;
+    transition: all 0.5s;
+    &:hover,:focus {
+      cursor: pointer;
+      outline: none;
+      transform: scale(1.05);
+      background-color: #000;
+    }
+`;
 
 function SignUp () {
   const navigate = useNavigate();
@@ -123,38 +191,47 @@ function SignUp () {
   };
 
   return (
-    <div>
-      {/* 안쪽 div 다 없애고 CSS로 처리하기 */}
-      <div>
-        {/* 포커스 아웃 이벤트 발생시 */}
-        {/* 요청 보내기 전에 이메일 형식인지 확인 */}
-        {/* 요청보내서 중복확인 */}
-        <input type='email' placeholder='email' onChange={handleInput} onBlur={handleOnBlur} />
-        <div>{checkText.email}</div>
-      </div>
-      <div>
-        {/* 포커스 아웃 이벤트 발생시 */}
-        {/* 요청 보내기 전에 글자수, 특수문자 제한 */}
-        {/* 요청 보내서 중복확인 */}
-        <input type='text' placeholder='nickname' onChange={handleInput} onBlur={handleOnBlur} />
-        <div>{checkText.nickname}</div>
-      </div>
-      <div>
-        {/* 포커스 아웃 이벤트 발생시 */}
-        {/* 알파벳, 숫자, 특수문자 포함 8~15글자 사이로 */}
-        <input type='password' placeholder='password' onChange={handleInput} onBlur={handlePwBlur} />
-        <div>{checkText.password}</div>
-      </div>
-      <div>
-        {/* 포커스 아웃 이벤트 발생시 */}
-        {/* 위에꺼랑 같은지 비교 */}
-        <input type='password' placeholder='password check' onChange={handleInput} onBlur={handlePwBlur} />
-        <div>{checkText.passwordCheck}</div>
-      </div>
-      {/* 성공시 로그인 리다이렉트 */}
-      <button onClick={handleSignUp}>Sign Up</button>
-      <div>{checkText.submit}</div>
-    </div>
+    <SignUpWrap>
+      <SignUpContainer>
+        <img src='/images/logo.png' alt='logo' />
+        <InputWrap>
+          <SignUpInput type='email' placeholder='email' onChange={handleInput} onBlur={handleOnBlur} />
+          {checkText.email === '사용 가능한 이메일 입니다.'
+            ? (
+              <span className='green'>{checkText.email}</span>
+              )
+            : (
+              <span>{checkText.email}</span>
+              )}
+          <SignUpInput type='text' placeholder='nickname' onChange={handleInput} onBlur={handleOnBlur} />
+          {checkText.nickname === '사용 가능한 닉네임 입니다.'
+            ? (
+              <span className='green'>{checkText.nickname}</span>
+              )
+            : (
+              <span>{checkText.nickname}</span>
+              )}
+          <SignUpInput type='password' placeholder='password' onChange={handleInput} onBlur={handlePwBlur} />
+          {checkText.password === '사용 가능한 비밀번호 입니다.'
+            ? (
+              <span className='green'>{checkText.password}</span>
+              )
+            : (
+              <span>{checkText.password}</span>
+              )}
+          <SignUpInput type='password' placeholder='password check' onChange={handleInput} onBlur={handlePwBlur} />
+          {checkText.passwordCheck === '비밀번호가 일치합니다.'
+            ? (
+              <span className='green'>{checkText.passwordCheck}</span>
+              )
+            : (
+              <span>{checkText.passwordCheck}</span>
+              )}
+        </InputWrap>
+        <br />
+        <SignUpButton onClick={handleSignUp}>Sign Up</SignUpButton>
+      </SignUpContainer>
+    </SignUpWrap>
   );
 }
 
