@@ -54,12 +54,12 @@ module.exports = async (req, res) => {
           [Op.like]: '%' + query + '%'
         }
       }
-    })//query 가 있는경우 
+    })// query 가 있는경우
       .then(async (result) => {
-        const searcheditemarray = []
-        for (let item of result){
-          const itemreview = item.reviews[0]//해당 아이템의 가장 최근 리뷰 
-          if(!itemreview){
+        const searcheditemarray = [];
+        for (const item of result) {
+          const itemreview = item.reviews[0];// 해당 아이템의 가장 최근 리뷰
+          if (!itemreview) {
             const payload = {
               itemid: item.id,
               itemname: item.name,
@@ -76,10 +76,8 @@ module.exports = async (req, res) => {
                 updatedAt: ''
               }
             };
-            searcheditemarray.push(payload)
-
-          }
-          else{
+            searcheditemarray.push(payload);
+          } else {
             const recentnick = await user.findOne({
               where: { id: itemreview.userId }
             });
@@ -105,14 +103,8 @@ module.exports = async (req, res) => {
                 updatedAt: itemreview.updatedAt
               }
             };
-            searcheditemarray.push(payload)
-            
+            searcheditemarray.push(payload);
           }
-          
-          
-          
-
-
         }
         res.json({ data: searcheditemarray, message: 'Found itemAll' });
       }).catch(err => console.log(err));
