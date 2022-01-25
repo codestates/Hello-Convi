@@ -23,6 +23,7 @@ const Searchbtn = styled.button`
       transform: scale(1.05);
   }
 `;
+
 const SearchInput = styled.input`
   box-sizing: border-box;
   padding: 0 0 0 10px;
@@ -50,16 +51,19 @@ function Search ({ setSearchedItem }) {
     axios.get('http://localhost:8080/getitems', config)
       .then(res => {
         setSearchedItem(res.data.data);
-        console.log(res.data.data);
+        // console.log(res.data.data);
       });
     // console.log(itemlist)
   }, []);
 
   const onSubmitHandler = (event) => {
-    console.log(event.target[0].value);
-    // axios
-    setSearchedItem(event.target[0].value);
     event.preventDefault();
+    // console.log(event.target[0].value);
+    // axios
+    const query = event.target[0].value;
+    axios.get(`http://localhost:8080/getitems?search=${query}`, config).then(res => {
+      setSearchedItem(res.data.data);
+    });
   };
 
   return (
