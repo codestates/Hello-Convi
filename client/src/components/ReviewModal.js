@@ -10,7 +10,7 @@ import Rating from './Rating';
 
 const ModalBackDrop = styled.div`
     position : fixed;
-    z-index : 999;
+    z-index : 100;
     top : 0;
     left : 0;
     bottom : 0;
@@ -191,7 +191,7 @@ function ReviewModal () {
               <Search setSearchedItem={setSearchedItem} />
               {/* default는 curItemInfo.itemname으로 */}
               <SelectBox>
-                <Rating setStars={setStars} />
+                <Rating className='stars' stars={setStars} />
                 <select onChange={handleOptionChg}>
                   {/* {searchedItem.map((item, idx) => {
                               return <option value={item.itemname}></option>
