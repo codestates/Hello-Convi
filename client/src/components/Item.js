@@ -61,8 +61,6 @@ const ReviewInfo = styled.div`
 function Item ({ item }) {
   const review = item.review;
 
-  
-
   return (
     <ItemWrap>
       <ImgWrap>
