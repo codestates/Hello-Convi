@@ -101,7 +101,8 @@ const GithubButton = styled.button`
       background-color: #000;
     }
 `;
-
+// let count = 0;
+// let isoauth = false
 function Login () {
   const config = {
     headers: {
@@ -139,10 +140,8 @@ function Login () {
         });
       // axios 실패시
     }
-    if (event.target.className === 'githubBtn') {
-      // axios 성공시
-      dispatch(login({ email: '응답의 email', nickname: '응답의 nickname' }));
-      // axios 실패시
+    if (event.target.className.includes('githubBtn')) {
+      window.location.assign('https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=da4e288805f2fb1fe0efa41cb629944f&redirect_uri=http://localhost:3000');
     }
     if (event.target.className === 'signup') {
       navigate('/signup');
@@ -161,7 +160,7 @@ function Login () {
         <button className='signup' onClick={handleSubmit}>아직 계정이 없습니까?</button>
         <div>
           <LoginButton className='loginBtn' onClick={handleSubmit}>Login</LoginButton>
-          <GithubButton className='githubBtn' onClick={handleSubmit}>Github</GithubButton>
+          <GithubButton className='githubBtn' onClick={handleSubmit}>Kakao</GithubButton>
         </div>
       </LoginContainer>
     </LoginWrap>
