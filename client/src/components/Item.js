@@ -94,7 +94,7 @@ function Item ({ item }) {
   return (
     <ItemWrap>
       <ImgWrap>
-        <img src='/images/logo3.png' alt='logo' />
+        <img src={item.photo} alt='logo' />
         {item.score ? <span>{item.score}</span> : null}
       </ImgWrap>
       <SectionWrap>

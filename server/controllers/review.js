@@ -6,11 +6,42 @@ module.exports = {
   get: (req, res) => {
     const { itemid, userid } = req.query;
     if (itemid) {
-      review.findAll({
-        order: [['createdAt', 'DESC']],
-        where: { itemId: itemid }
+      item.findAll({
+        where: { id: itemid },
+        include: [{
+          model: review,
+          required: true,
+          include: [{
+            model: user, required: true
+          }]
+        }
+      ]
       })
-        .then(el => res.status(200).json({ data: el, message: 'ok' }));
+        .then(el => {
+          const result =[]
+          
+          el.map(ele=>{
+            ele.reviews.map(elel=>{
+              const payload = {
+                price:ele.price,
+                photo:ele.img,
+                name:ele.name,
+                userid:elel.user.id,
+                score:elel.score,
+                itemcontent:ele.content,
+                reviewcontent:elel.content,
+                createdAt:elel.createdAt,
+                updatedAt:elel.updatedAt,
+                nickname:elel.user.nickname,
+                email:elel.user.email
+              }
+              result.push(payload)
+
+            })
+
+          })
+          
+          res.status(200).json({ data: result, message: 'ok' })});
     } else if (userid) {
       user.findAll({
         where: { id: userid },
