@@ -12,9 +12,8 @@ module.exports = {
     // console.log(req.body)
     const authorizationCode = req.body.authorizationCode;
     if (!authorizationCode) {
-      res.json({ data: null, message: 'not authorized' });
+      res.status(404).json({ data: null, message: 'not authorized' });
     } else {
-      console.log(authorizationCode);
       const Token = await axios.post(
                 `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_secret=${clientSecret}&client_id=${clientID}&redirect_uri=http://localhost:3000/callback&code=${authorizationCode}`
 
@@ -25,6 +24,7 @@ module.exports = {
       //     redirect_uri: "http://localhost:8080/oauth",
       //     code : authorizationCode
       // })
+      // console.log(Token)
       const accessToken = Token.data.access_token;
       // console.log(accessToken)
 
@@ -34,7 +34,7 @@ module.exports = {
       // console.log(user.data)
       const nickname = kakaouser.data.kakao_account.profile.nickname;
       const email = kakaouser.data.kakao_account.email;
-      console.log(nickname, email);
+      // console.log(nickname, email);
       user.findOrCreate({
         where: { email: email, nickname: nickname }
       })

@@ -15,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
       // models.user.hasMany(review,{ foreignKey: 'user_id', sourceKey: 'id' });
       review.belongsTo(models.item);
       // models.item.hasMany(review,{ foreignKey: 'item_id', sourceKey: 'id' });
+      review.belongsTo(models.user);
+      review.belongsTo(models.item);
     }
   }
   review.init({
