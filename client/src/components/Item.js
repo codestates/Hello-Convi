@@ -77,19 +77,19 @@ const ReviewInfo = styled.div`
 //   return `${score}star`;
 // };
 
-const scoreToStar = (score) => {
-  const result = [];
-
-  for (let i = 1; i <= 5; i++) {
-    if (i <= score) result.push(<FontAwesomeIcon className='yellowStar' icon={faStar} />);
-    else if (i > score) result.push(<FontAwesomeIcon className='faStar' icon={faStar} />);
-  }
-
-  return result;
-};
-
 function Item ({ item }) {
   const review = item.review;
+
+  const scoreToStar = (score) => {
+    const result = [];
+  
+    for (let i = 1; i <= 5; i++) {
+      if (i <= score) result.push(<FontAwesomeIcon className='yellowStar' icon={faStar} />);
+      else if (i > score) result.push(<FontAwesomeIcon className='faStar' icon={faStar} />);
+    }
+  
+    return result;
+  };
 
   return (
     <ItemWrap>
