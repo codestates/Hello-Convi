@@ -61,8 +61,6 @@ function ItemInfo () {
     setLoading(false);
   }, []);
 
-  console.log(reviewsInfo);
-
   return (
     <div>
       {loading
