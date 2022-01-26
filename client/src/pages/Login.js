@@ -134,7 +134,7 @@ function Login () {
   };
 
   const handleSubmit = (event) => {
-    console.log(event.target)
+    console.log(event.target);
     if (event.target.className.includes('loginBtn')) {
       // axios 성공시
       axios.post('http://localhost:8080/login', { email: inputInfo.email, password: inputInfo.password }, config)
