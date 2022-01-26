@@ -171,13 +171,11 @@ function ReviewModal () {
     }, config).then((res) => {
       setIsOpen(!isOpen);
       window.location.reload();
-    }).catch(err=>console.log(err));
-    
+    }).catch(err => console.log(err));
   };
   useEffect(() => {
 
   }, []);
-
 
   // const handleInput = function(event) {
   //     //console.dir(event.target)

@@ -21,13 +21,12 @@ function App () {
     const nickname = cookies.get('nickname');
     const email = cookies.get('email');
     const oauth = cookies.get('oauth'); // false
-    console.log(oauth);
 
     // const userid = 1;
     // const nickname = 2;
     // const email = 3;
     // const oauth = false;
-    console.log(userId);
+
     if (oauth && userId) dispatch(login({ userId: JSON.parse(userId), nickname, email, oauth: JSON.parse(oauth) }));
   }, []);
 
