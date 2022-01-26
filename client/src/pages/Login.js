@@ -89,8 +89,6 @@ const GithubButton = styled.button`
     height: 2.5rem;
     border: none;
     border-radius: 10px;
-    background-image: url('/images/kakao.png');
-    background-size: cover;
     background-color: #ffed2b;    
     color: #ffffff;
     font-weight: 700;
@@ -104,6 +102,10 @@ const GithubButton = styled.button`
       
     }
 `;
+
+const ButtonWrap = styled.div`
+    display:flex;
+`
 // let count = 0;
 // let isoauth = false
 function Login () {
@@ -161,12 +163,12 @@ function Login () {
         </InputWrap>
         <br />
         <button className='signup' onClick={handleSubmit}>아직 계정이 없습니까?</button>
-        <div>
+        <ButtonWrap>
           <LoginButton className='loginBtn' onClick={handleSubmit}>Login</LoginButton>
-          <GithubButton className='githubBtn' onClick={handleSubmit}></GithubButton>
-        </div>
+          <GithubButton className='githubBtn' onClick={handleSubmit}>Kakao</GithubButton>
+        </ButtonWrap>
       </LoginContainer>
-    </LoginWrap>
+    </LoginWrap> 
   );
 }
 //client/public/images/kakao.png
