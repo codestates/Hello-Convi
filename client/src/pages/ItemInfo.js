@@ -49,22 +49,20 @@
 //   const getGroupList = async () => {
 //     await axios
 //       .get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
-//       .then((res) => setReviewsInfo(res.data.data));
+//       .then((res) => {
+//         setReviewsInfo(res.data.data);
+//       });
 //   };
+
 //   useEffect(() => {
 //     getGroupList();
 //     setLoading(false);
 //   }, []);
+
 //   console.log(reviewsInfo);
 
 //   return (
 //     <ItemInfoWrap>
-//       {/* advanced : iteminfo의 search 요소는 추후 모달 방식 이용하여 추가 */}
-//       {/* <Search setSearchedItem={setSearchedItem}/> */}
-//       {/* <div>{curItemInfo.photo}</div>
-//         <div>
-//           {curItemInfo.itemname}<br />{curItemInfo.price}
-//         </div> */}
 //       {loading
 //         ? <div>Loading중...</div>
 //         : <HeaderWrap>
@@ -74,15 +72,14 @@
 //             <h3>가격 : {reviewsInfo[0].price}</h3>
 //             <h3>평점 : {reviewsInfo[0].score}</h3>
 //           </div>
-
 //         </HeaderWrap>
-//         /* {reviewsInfo.map((review, idx) => {
-//             return (
-//               <div key={idx}>
-//                 <Review review={review} />
-//               </div>
-//             );
-//           })} */
+//         // {reviewsInfo.map((review, idx) => {
+//         //   return (
+//         //     <div key={idx}>
+//         //       <Review review={review}
+//         //     </div>
+//         //   )
+//         // })}
 //       }
 
 //     </ItemInfoWrap>
