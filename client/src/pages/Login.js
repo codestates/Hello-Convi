@@ -5,7 +5,6 @@ import { actionCreators } from '../store/store';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-
 const LoginWrap = styled.div`
   display: flex;
   justify-content: center;
@@ -105,7 +104,7 @@ const GithubButton = styled.button`
 
 const ButtonWrap = styled.div`
     display:flex;
-`
+`;
 // let count = 0;
 // let isoauth = false
 function Login () {
@@ -168,8 +167,8 @@ function Login () {
           <GithubButton className='githubBtn' onClick={handleSubmit}>Kakao</GithubButton>
         </ButtonWrap>
       </LoginContainer>
-    </LoginWrap> 
+    </LoginWrap>
   );
 }
-//client/public/images/kakao.png
+// client/public/images/kakao.png
 export default Login;
