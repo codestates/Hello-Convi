@@ -1,6 +1,6 @@
 // import { useSelector } from 'react-redux';
 // import { useEffect, useState } from 'react';
-// import Search from "../components/Search";
+// import Search from '../components/Search';
 // import axios from 'axios';
 // import dummyItem1Reviews from '../dummy/item1Reviews';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -43,6 +43,7 @@ const ReviewInfo = styled.div`
 `;
 
 function Review ({ review }) {
+  console.log(review);
   const scoreToStar = (score) => {
     const result = [];
 
@@ -58,7 +59,7 @@ function Review ({ review }) {
     <ReviewWrap>
       <ReviewInfo>
         <span>{scoreToStar(3)}</span>
-        <span>닉네임</span>
+        <span />
       </ReviewInfo>
       <div className='content'>리뷰ㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅀㅇㅎㅇㅎ</div>
     </ReviewWrap>

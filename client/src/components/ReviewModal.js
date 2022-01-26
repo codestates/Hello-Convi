@@ -170,7 +170,8 @@ function ReviewModal () {
       score: stars
     }, config).then((res) => {
       setIsOpen(!isOpen);
-    }).catch(console.log);
+      window.location.reload();
+    }).catch(err => console.log(err));
   };
 
   // const handleInput = function(event) {
