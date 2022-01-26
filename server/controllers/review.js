@@ -57,8 +57,8 @@ module.exports = {
         .then(el => {
           const element = el[0];
           const result = [];
-          if(el.length===0){
-            return []
+          if (el.length === 0) {
+            return [];
           } else {
             for (const ele of element.reviews) {
               const payload = {
@@ -78,7 +78,6 @@ module.exports = {
             }
           }
           res.status(200).json({ data: result, message: 'ok' });
-
         });
     }
   },
