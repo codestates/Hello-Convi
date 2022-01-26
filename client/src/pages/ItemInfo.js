@@ -1,8 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-// import Search from '../components/Search';
 import axios from 'axios';
-// import dummyItem1Reviews from '../dummy/item1Reviews';
 import Review from '../components/Review';
 import styled from 'styled-components';
 
@@ -45,58 +43,47 @@ function ItemInfo () {
     withCredentials: true
   };
 
-  // const getGroupList = async () => {
-  //   await axios
-  //     .get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
-  //     .then((res) => setReviewsInfo(res.data.data));
-  // };
+  const getGroupList = async () => {
+    await axios
+      .get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
+      .then((res) => {
+        setReviewsInfo(res.data.data);
+      });
+  };
+
   useEffect(() => {
     setLoading(true);
-    const getGroupList = () => {
-      axios
-        .get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
-        .then((res) => {
-          console.log(res.data.data);
-          setReviewsInfo(res.data.data);
-          setLoading(false);
-          return () => setLoading(true);
-        });
-    };
-    return getGroupList();
+    getGroupList();
+    setLoading(false);
   }, []);
-  // console.log(reviewsInfo);
+
+  console.log(reviewsInfo);
 
   return (
-    <ItemInfoWrap>
-      {/* advanced : iteminfo의 search 요소는 추후 모달 방식 이용하여 추가 */}
-      {/* <Search setSearchedItem={setSearchedItem}/> */}
-      {/* <div>{curItemInfo.photo}</div>
-        <div>
-          {curItemInfo.itemname}<br />{curItemInfo.price}
-        </div> */}
+    <div>
       {loading
-        ? <div>Loading중...</div>
-        : (
-          <span>
-            <HeaderWrap>
-              <img src={curItemInfo.photo} alt='logo' className='img' />
-              <div>
-                <h3>이름 : {curItemInfo.itemname}</h3>
-                <h3>가격 : {curItemInfo.price}</h3>
-                <h3>평점 : {curItemInfo.score}</h3>
+        ? (<div>Loading중...</div>)
+        : 
+        (
+        <ItemInfoWrap>
+          <HeaderWrap>
+            <img src={reviewsInfo[0].photo} alt='logo' className='img' />
+            <div>
+              <h3>이름 : {reviewsInfo[0].name}</h3>
+              <h3>가격 : {reviewsInfo[0].price}</h3>
+              <h3>평점 : {reviewsInfo[0].score}</h3>
+            </div>
+          </HeaderWrap>
+          {reviewsInfo.map((item, idx) => {
+            return (
+              <div key={idx}>
+                <Review item={item} />
               </div>
-            </HeaderWrap>
-            {reviewsInfo.map((review, idx) => {
-              return (
-                <div key={idx}>
-                  <Review review={review} />
-                </div>
-              );
-            })}
-          </span>
-          )}
-
-    </ItemInfoWrap>
+            );
+          })}
+        </ItemInfoWrap>
+        )}
+    </div>
   );
 }
 
