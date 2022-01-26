@@ -20,7 +20,10 @@ module.exports = {
       const accessToken = sign(payload, process.env.ACCESS_SECRET, { expiresIn: '1m' });
       const refreshToken = sign(payload, process.env.REFRESH_SECRET, { expiresIn: '10m' });
 
-      res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true, sameSite: 'none' }).status(200).json({ data: { payload, accessToken }, message: 'login success' });
+      res.cookie('accessToken', accessToken);
+      res.cookie('refreshToken', refreshToken);
+      res.status(200).json({ data: { payload, accessToken }, message: 'login success' })
+      
     }
   },
   oauth: (req, res) => {
