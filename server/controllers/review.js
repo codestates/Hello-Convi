@@ -15,33 +15,32 @@ module.exports = {
             model: user, required: true
           }]
         }
-      ]
+        ]
       })
         .then(el => {
-          const result =[]
-          
-          el.map(ele=>{
-            ele.reviews.map(elel=>{
+          const result = [];
+
+          el.map(ele => {
+            return ele.reviews.map(elel => {
               const payload = {
-                price:ele.price,
-                photo:ele.img,
-                name:ele.name,
-                userid:elel.user.id,
-                score:elel.score,
-                itemcontent:ele.content,
-                reviewcontent:elel.content,
-                createdAt:elel.createdAt,
-                updatedAt:elel.updatedAt,
-                nickname:elel.user.nickname,
-                email:elel.user.email
-              }
-              result.push(payload)
+                price: ele.price,
+                photo: ele.img,
+                name: ele.name,
+                userid: elel.user.id,
+                score: elel.score,
+                itemcontent: ele.content,
+                reviewcontent: elel.content,
+                createdAt: elel.createdAt,
+                updatedAt: elel.updatedAt,
+                nickname: elel.user.nickname,
+                email: elel.user.email
+              };
+              return result.push(payload);
+            });
+          });
 
-            })
-
-          })
-          
-          res.status(200).json({ data: result, message: 'ok' })});
+          res.status(200).json({ data: result, message: 'ok' });
+        });
     } else if (userid) {
       user.findAll({
         where: { id: userid },

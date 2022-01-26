@@ -1,8 +1,8 @@
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import Search from "../components/Search";
-import axios from 'axios';
-import dummyItem1Reviews from '../dummy/item1Reviews';
+// import { useSelector } from 'react-redux';
+// import { useEffect, useState } from 'react';
+// import Search from '../components/Search';
+// import axios from 'axios';
+// import dummyItem1Reviews from '../dummy/item1Reviews';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
@@ -43,10 +43,9 @@ const ReviewInfo = styled.div`
 `;
 
 function Review ({ review }) {
-  console.log(review)
+  console.log(review);
   const scoreToStar = (score) => {
     const result = [];
-    
 
     for (let i = 1; i <= 5; i++) {
       if (i <= score) result.push(<FontAwesomeIcon className='yellowStar' icon={faStar} />);
@@ -60,7 +59,7 @@ function Review ({ review }) {
     <ReviewWrap>
       <ReviewInfo>
         <span>{scoreToStar(3)}</span>
-        <span></span>
+        <span />
       </ReviewInfo>
       <div className='content'>리뷰ㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅀㅇㅎㅇㅎ</div>
     </ReviewWrap>
