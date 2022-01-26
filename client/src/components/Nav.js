@@ -4,7 +4,7 @@ import { actionCreators } from '../store/store';
 import styled from 'styled-components';
 import { ReviewModal } from './index';
 import axios from 'axios';
-//import { Cookies } from 'react-cookie';
+// import { Cookies } from 'react-cookie';
 
 const Navi = styled.header`
 position: fixed;
