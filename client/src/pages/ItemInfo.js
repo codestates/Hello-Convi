@@ -38,7 +38,7 @@
 // function ItemInfo() {
 //   const [loading, setLoading] = useState(true);
 //   const curItemInfo = useSelector(state => state.curItemInfo);
-//   const [reviewsInfo, setReviewsInfo] = useState('ok'); // -> axios 구현한 후 이걸로 사용
+//   const [reviewsInfo, setReviewsInfo] = useState([{name:''}]); // -> axios 구현한 후 이걸로 사용
 //   const config = {
 //     headers: {
 //       'Content-Type': 'application/json'
@@ -46,7 +46,8 @@
 //     withCredentials: true
 //   };
 
-//   const getGroupList = async () => {
+  
+//   const getReviewList = async () => {
 //     await axios
 //       .get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
 //       .then((res) => {
@@ -54,34 +55,36 @@
 //         setReviewsInfo(res.data.data)
 //       });
 //   };
+  
 
 //   useEffect(() => {
 //     getGroupList();
 //     setLoading(false);
 //   }, []);
-
+// console.log(getReviewList)
 //   return (
 //     <ItemInfoWrap>
 //       {loading
 //         ? <div>Loading중...</div>
-//         :
+//         : 
+//         <span>
 //         <HeaderWrap>
-//           <img src={reviewsInfo[0].photo} alt='logo' className='img' />
+//           <img src={getReviewList[0].photo} alt='logo' className='img' />
 //           <div>
-//             <h3>이름 : {reviewsInfo[0].name}</h3>
-//             <h3>가격 : {reviewsInfo[0].price}</h3>
-//             <h3>평점 : {reviewsInfo[0].score}</h3>
+//             <h3>이름 : {getReviewList[0].name}</h3>
+//             <h3>가격 : {getReviewList[0].price}</h3>
+//             <h3>평점 : {getReviewList[0].score}</h3>
 //           </div>
-//           </HeaderWrap>
-//         // {reviewsInfo.map((review, idx) => {
-//         //   return (
-//         //     <div key={idx}>
-//         //       <Review review={review}
-//         //     </div>
-//         //   )
-//         // })}
+//         </HeaderWrap>        
+//         {/* {reviewsInfo.map((review, idx) => {
+//           return (
+//             <div key={idx}>
+//               <Review review={review} />
+//             </div>
+//           );
+//         })} */}
+//         </span>
 //       }
-
 //     </ItemInfoWrap>
 //   );
 // }
