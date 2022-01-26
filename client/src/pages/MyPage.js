@@ -29,7 +29,7 @@ function MyPage () {
   };
   useEffect(() => {
     // axios.get 하고 itemReviewed 채워넣기
-    axios.get(`http://localhost:8080/getitems?userid=${userInfo.userId}`, config)
+    axios.get(`http://localhost:8080/review?userid=${userInfo.userId}`, config)
       .then(el => setItemReviewed(el.data.data))
       .catch(err => console.log(err));
   }, []);

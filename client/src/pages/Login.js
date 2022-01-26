@@ -134,6 +134,7 @@ function Login () {
   };
 
   const handleSubmit = (event) => {
+    console.log(event.target);
     if (event.target.className.includes('loginBtn')) {
       // axios 성공시
       axios.post('http://localhost:8080/login', { email: inputInfo.email, password: inputInfo.password }, config)
@@ -144,6 +145,9 @@ function Login () {
       // axios 실패시
     }
     if (event.target.className.includes('githubBtn')) {
+      window.location.assign('https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=da4e288805f2fb1fe0efa41cb629944f&redirect_uri=http://localhost:3000/callback');
+    }
+    if (event.target.className.includes('cacao')) {
       window.location.assign('https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=da4e288805f2fb1fe0efa41cb629944f&redirect_uri=http://localhost:3000/callback');
     }
     if (event.target.className === 'signup') {
@@ -163,7 +167,7 @@ function Login () {
         <button className='signup' onClick={handleSubmit}>아직 계정이 없습니까?</button>
         <LoginButton className='loginBtn' onClick={handleSubmit}>Login</LoginButton>
         <FloatingText>──────   또는   ──────</FloatingText>
-        <GithubButton className='githubBtn' onClick={handleSubmit}><img src='/images/kakao.png' alt='logo' className='cacao' /></GithubButton>
+        <GithubButton className='githubBtn' onClick={handleSubmit}><img src='/images/kakao.png' alt='logo' className='cacao' onClick={handleSubmit} /></GithubButton>
       </LoginContainer>
     </LoginWrap>
   );

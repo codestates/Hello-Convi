@@ -42,8 +42,8 @@ const ReviewInfo = styled.div`
   }
 `;
 
-function Review ({ review }) {
-  console.log(review);
+function Review ({ item }) {
+  console.log(item.score);
   const scoreToStar = (score) => {
     const result = [];
 
@@ -58,10 +58,10 @@ function Review ({ review }) {
   return (
     <ReviewWrap>
       <ReviewInfo>
-        <span>{scoreToStar(3)}</span>
-        <span />
+        <span>{scoreToStar(item.score)}</span>
+        <span>{item.nickname}</span>
       </ReviewInfo>
-      <div className='content'>리뷰ㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅀㅇㅎㅇㅎ</div>
+      <div className='content'>{item.reviewcontent}</div>
     </ReviewWrap>
   );
 }
