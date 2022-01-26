@@ -57,8 +57,8 @@ module.exports = {
         .then(el => {
           const element = el[0];
           const result = [];
-          if (element.reviews.length === 0) {
-            res.status(200).json({ data: null, message: 'empty review' });
+          if(el.length===0){
+            return []
           } else {
             for (const ele of element.reviews) {
               const payload = {
@@ -76,9 +76,9 @@ module.exports = {
               };
               result.push(payload);
             }
-
-            res.status(200).json({ data: result, message: 'ok' });
           }
+          res.status(200).json({ data: result, message: 'ok' });
+
         });
     }
   },
