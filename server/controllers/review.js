@@ -55,7 +55,7 @@ module.exports = {
         ]
       })
         .then(el => {
-          let element = el[0]
+          const element = el[0];
           const result = [];
 
           for (const ele of element.reviews) {
@@ -69,7 +69,7 @@ module.exports = {
                 reviewid: ele.id,
                 nickname: element.nickname,
                 content: ele.content,
-                score: ele.score,
+                score: ele.score
               }
             };
             result.push(payload);
