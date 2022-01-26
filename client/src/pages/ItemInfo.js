@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-//import Search from '../components/Search';
+// import Search from '../components/Search';
 import axios from 'axios';
-//import dummyItem1Reviews from '../dummy/item1Reviews';
+// import dummyItem1Reviews from '../dummy/item1Reviews';
 import Review from '../components/Review';
 import styled from 'styled-components';
 
