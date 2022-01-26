@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
@@ -170,8 +170,14 @@ function ReviewModal () {
       score: stars
     }, config).then((res) => {
       setIsOpen(!isOpen);
-    }).catch(console.log);
+      window.location.reload();
+    }).catch(err=>console.log(err));
+    
   };
+  useEffect(() => {
+
+  }, []);
+
 
   // const handleInput = function(event) {
   //     //console.dir(event.target)

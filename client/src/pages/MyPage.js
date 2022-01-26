@@ -1,10 +1,9 @@
-import React, { /*  useState, */ useEffect } from 'react';
+import React, {   useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Item from '../components/Item';
 import styled from 'styled-components';
-import dummyItems from '../dummy/dummyItems';
-// import axios from 'axios';
+import axios from 'axios';
 
 const MyPageWrap = styled.div`
   display: flex;
@@ -21,11 +20,18 @@ const InfoWrap = styled.div`
 
 function MyPage () {
   const userInfo = useSelector(state => state.userInfo);
-  // const [itemReviewed, setItemReviewed] = useState([]);
-
+  const [itemReviewed, setItemReviewed] = useState([]);
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    withCredentials: true
+  };
   useEffect(() => {
     // axios.get 하고 itemReviewed 채워넣기
-    // axios.get(`http://localhost:8080/getitems?userid=${review.userId}`, config)
+    axios.get(`http://localhost:8080/getitems?userid=${userInfo.userId}`, config)
+    .then(el => setItemReviewed(el.data.data))
+    .catch(err=>console.log(err))
 
   }, []);
 
@@ -39,7 +45,7 @@ function MyPage () {
         </div>
       </InfoWrap>
       <div>
-        {dummyItems.map((item, idx) => {
+        {itemReviewed.map((item, idx) => {
           return (
             <div key={idx}>
               <Item item={item} />
