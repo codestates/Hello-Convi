@@ -69,8 +69,8 @@ module.exports = {
     // res.send("hithisisoauth")
   },
   get: async (req, res) => {
-    console.log("일단 겟 요청은 잘 받았다 ")
-    res.redirect('http://localhost:3000')
+    console.log('일단 겟 요청은 잘 받았다 ');
+    res.redirect('http://localhost:3000');
   }
 
   // req.body로 authorization code 가 들어옴

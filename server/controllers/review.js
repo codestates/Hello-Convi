@@ -1,33 +1,34 @@
-const { user,item,review } = require('../models');
+const { user, item, review } = require('../models');
 const { verify } = require('jsonwebtoken');
 require('dotenv').config();
 
 module.exports = {
   get: (req, res) => {
-    const {itemid,userid}= req.query
-    if(itemid){
+    const { itemid, userid } = req.query;
+    if (itemid) {
       review.findAll({
         order: [['createdAt', 'DESC']],
-        where:{itemId:itemid}
+        where: { itemId: itemid }
       })
-      .then(el => res.status(200).json({data:el,message:'ok'}))
-    } else if(userid){
+        .then(el => res.status(200).json({ data: el, message: 'ok' }));
+    } else if (userid) {
       user.findAll({
         where: { id: userid },
         include: [{
-          model: review, required: true,
+          model: review,
+          required: true,
           order: [['createdAt', 'DESC']],
-          include:[{
-            model:item,required:true
-          }]}
+          include: [{
+            model: item, required: true
+          }]
+        }
         ]
       })
         .then(el => {
-          const reviewCount = el[0].reviews
-          res.status(200).json({ data: reviewCount, message: 'ok' })
-      });
+          const reviewCount = el[0].reviews;
+          res.status(200).json({ data: reviewCount, message: 'ok' });
+        });
     }
-    
   },
   post: (req, res) => {
     const { userId, itemId, score, content } = req.body;

@@ -93,9 +93,9 @@ module.exports = {
         content: '간편하게 조리하는 1인 부대찌개!',
         createdAt: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
         updatedAt: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
-      },
-    ]
-    
+      }
+    ];
+
     const category = [
       {
         name: '음료',

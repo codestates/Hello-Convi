@@ -18,10 +18,10 @@ module.exports = {
         updatedAt: data.updatedAt
       };
       const accessToken = sign(payload, process.env.ACCESS_SECRET, { expiresIn: '10m' });
-      res.cookie('id',data.id);
-      res.cookie('nickname',data.nickname);
-      res.cookie('email',data.email)
-      res.cookie('oauth',false)
+      res.cookie('id', data.id);
+      res.cookie('nickname', data.nickname);
+      res.cookie('email', data.email);
+      res.cookie('oauth', false);
       res.cookie('accessToken', accessToken);
       res.status(200).json({ data: payload, message: 'login success' });
     }
