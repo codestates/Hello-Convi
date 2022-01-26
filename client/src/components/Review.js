@@ -59,7 +59,7 @@ function Review ({ item }) {
     <ReviewWrap>
       <ReviewInfo>
         <span>{scoreToStar(item.score)}</span>
-        <span />
+        <span>{item.nickname}</span>
       </ReviewInfo>
       <div className='content'>{item.reviewcontent}</div>
     </ReviewWrap>
