@@ -13,6 +13,7 @@ const signup = require('./controllers/signup');
 const review = require('./routes/review');
 const user = require('./routes/user');
 const check = require('./controllers/check');
+const oauth = require('./routes/oauth');
 
 app.use(cors({
   origin: 'http://localhost:3000',
@@ -31,6 +32,7 @@ app.delete('/dropout', dropout);
 app.use('/user', user);
 app.use('/review', review);
 app.use('/check', check);
+app.use('/oauth', oauth);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

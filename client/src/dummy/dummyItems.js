@@ -8,7 +8,7 @@ const dummyItems = [
     review: {
       nickname: 'nickname1',
       content: 'content1',
-      score: 'score1',
+      score: 1,
       createdAt: 'createdAt1'
     }
   },
@@ -21,7 +21,7 @@ const dummyItems = [
     review: {
       nickname: 'nickname2',
       content: 'content2',
-      score: 'score2',
+      score: 2,
       createdAt: 'createdAt2'
     }
   },
@@ -34,7 +34,7 @@ const dummyItems = [
     review: {
       nickname: 'nickname3',
       content: 'content3',
-      score: 'score3',
+      score: 3,
       createdAt: 'createdAt3'
     }
   }

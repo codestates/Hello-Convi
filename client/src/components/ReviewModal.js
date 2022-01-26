@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import Search from './Search';
-import dummyItems from '../dummy/dummyItems';
+// import dummyItems from '../dummy/dummyItems';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import Rating from './Rating';
 
 const ModalBackDrop = styled.div`
     position : fixed;
-    z-index : 999;
+    z-index : 100;
     top : 0;
     left : 0;
     bottom : 0;
@@ -51,10 +51,11 @@ const ModalView = styled.div`
         cursor : pointer;        
     }
 
-    img {
-      height: 150px;
-      width: 350px;
+    .img {
+      height: 200px;
+      width: 500px;
       margin-bottom: 10px;
+      margin-right: 50px;
     }
 `;
 
@@ -187,17 +188,17 @@ function ReviewModal () {
           <ModalBackDrop onClick={handleOpenModal}>
             <ModalView onClick={(event) => event.stopPropagation()}>
               <span className='close_btn' onClick={handleOpenModal}>&times;</span>
-              <img src='images/logo3.png' alt='logo' />
+              <img src='images/logo3.png' alt='logo' className='img' />
               <Search setSearchedItem={setSearchedItem} />
               {/* default는 curItemInfo.itemname으로 */}
               <SelectBox>
-                <Rating className='stars' stars={setStars} />
+                <Rating className='stars' setStars={setStars} />
                 <select onChange={handleOptionChg}>
                   {/* {searchedItem.map((item, idx) => {
                               return <option value={item.itemname}></option>
                           })} */}
                   <option>-- 상품 --</option>
-                  {dummyItems.map((item, idx) => {
+                  {searchedItem.map((item, idx) => {
                     if (item.itemid === curItemInfo.itemid) return <option key={idx} value={item.itemname} selected>{item.itemname}</option>;
                     return <option key={idx} value={item.itemid}>{item.itemname}</option>;
                   })}

@@ -1,13 +1,33 @@
-const { review } = require('../models');
+const { user,item,review } = require('../models');
 const { verify } = require('jsonwebtoken');
 require('dotenv').config();
 
 module.exports = {
   get: (req, res) => {
-    const params = req.params.id;
-    console.log(params);
-    review.findAll({ where: { itemId: params } })
-      .then(el => res.status(200).json({ data: el, message: 'ok' }));
+    const {itemid,userid}= req.query
+    if(itemid){
+      review.findAll({
+        order: [['createdAt', 'DESC']],
+        where:{itemId:itemid}
+      })
+      .then(el => res.status(200).json({data:el,message:'ok'}))
+    } else if(userid){
+      user.findAll({
+        where: { id: userid },
+        include: [{
+          model: review, required: true,
+          order: [['createdAt', 'DESC']],
+          include:[{
+            model:item,required:true
+          }]}
+        ]
+      })
+        .then(el => {
+          const reviewCount = el[0].reviews
+          res.status(200).json({ data: reviewCount, message: 'ok' })
+      });
+    }
+    
   },
   post: (req, res) => {
     const { userId, itemId, score, content } = req.body;
@@ -22,7 +42,7 @@ module.exports = {
       })
         .then(result => {
           console.log('===============review 추가완료===============');
-          res.status(201).send('Success Add Review');
+          res.status(200).json({ data: null, message: 'ok' });
         }).catch(err => console.log(err));
     }
   },

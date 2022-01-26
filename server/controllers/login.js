@@ -17,13 +17,13 @@ module.exports = {
         createdAt: data.createdAt,
         updatedAt: data.updatedAt
       };
-      const accessToken = sign(payload, process.env.ACCESS_SECRET, { expiresIn: '1m' });
-      const refreshToken = sign(payload, process.env.REFRESH_SECRET, { expiresIn: '10m' });
-
+      const accessToken = sign(payload, process.env.ACCESS_SECRET, { expiresIn: '10m' });
+      res.cookie('id',data.id);
+      res.cookie('nickname',data.nickname);
+      res.cookie('email',data.email)
+      res.cookie('oauth',false)
       res.cookie('accessToken', accessToken);
-      res.cookie('refreshToken', refreshToken);
-      res.status(200).json({ data: { payload, accessToken }, message: 'login success' })
-      
+      res.status(200).json({ data: payload, message: 'login success' });
     }
   },
   oauth: (req, res) => {

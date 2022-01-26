@@ -1,4 +1,3 @@
-import dummyItems from '../dummy/dummyItems';
 import { useState } from 'react';
 import Search from '../components/Search';
 import Item from '../components/Item';
@@ -6,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { actionCreators } from '../store/store';
 import styled from 'styled-components';
+// import dummyItems from '../dummy/dummyItems';
 
 const MainWrap = styled.div`
   display: flex;
@@ -13,7 +13,9 @@ const MainWrap = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  padding-top: 50px;
+  
 `;
 
 const SectionWrap = styled.section`
@@ -33,13 +35,14 @@ function Main () {
     navigate('/iteminfo');
   };
 
+
+
   return (
     <MainWrap>
       <img src='/images/logo3.png' alt='logo' />
       <Search setSearchedItem={setSearchedItem} />
       <SectionWrap>
-        {/* 나중에 dummydata 대신에 searchedItem으로 렌더링 */}
-        {dummyItems.map((item, idx) => {
+        {searchedItem.map((item, idx) => {
           return (
             <div key={idx} onClick={(event) => handleOnClick(event, item)}>
               <Item item={item} />

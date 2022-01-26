@@ -3,9 +3,10 @@ import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { actionCreators } from '../store/store';
 import styled from 'styled-components';
 import { ReviewModal } from './index';
-
-const Navi = styled.div`
+import axios from 'axios';
+const Navi = styled.header`
 position: fixed;
+top: 0;
 width: 100%;
 background-color: white;
 box-shadow: 0 0.5px 3px 0;
@@ -54,6 +55,7 @@ function Nav () {
   const { logout } = actionCreators;
 
   const logoutHandler = () => {
+    axios.get('http://localhost:8080/logout');
     dispatch(logout());
     navigate('/');
   };

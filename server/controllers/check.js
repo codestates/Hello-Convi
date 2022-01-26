@@ -9,9 +9,9 @@ module.exports = async (req, res) => {
 
   if (password && !email && !nickname) { // 비밀번호 확인 요청
     // 이 경우 쿠키에 있는 유저 정보와 비밀번호 일치 확인
-    const cookie = res.cookies.accessToken;
+    const cookie = req.cookies.accessToken;
     if (!cookie) {
-      res.json({ data: null, message: 'not Authorized' });
+      res.status(400).json({ data: null, message: 'not Authorized' });
     } else {
       const userdata = jwt.verify(cookie, process.env.ACCESS_SECRET);
 
@@ -20,9 +20,9 @@ module.exports = async (req, res) => {
         { where: { id: userid } }
       );
       if (userInfo.dataValues.password === password) {
-        res.json({ data: null, message: 'password correct!' });
+        res.status(200).json({ data: null, message: 'password correct!' });
       } else {
-        res.json({ data: null, message: 'incorrect password' });
+        res.status(400).json({ data: null, message: 'incorrect password' });
       }
     }
   } else if (nickname && !email && !password) {
