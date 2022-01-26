@@ -46,7 +46,6 @@
 //     withCredentials: true
 //   };
 
-  
 //   const getReviewList = async () => {
 //     await axios
 //       .get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
@@ -55,7 +54,6 @@
 //         setReviewsInfo(res.data.data)
 //       });
 //   };
-  
 
 //   useEffect(() => {
 //     getGroupList();
@@ -66,7 +64,7 @@
 //     <ItemInfoWrap>
 //       {loading
 //         ? <div>Loading중...</div>
-//         : 
+//         :
 //         <span>
 //         <HeaderWrap>
 //           <img src={getReviewList[0].photo} alt='logo' className='img' />
@@ -75,7 +73,7 @@
 //             <h3>가격 : {getReviewList[0].price}</h3>
 //             <h3>평점 : {getReviewList[0].score}</h3>
 //           </div>
-//         </HeaderWrap>        
+//         </HeaderWrap>
 //         {/* {reviewsInfo.map((review, idx) => {
 //           return (
 //             <div key={idx}>
