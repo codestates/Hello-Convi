@@ -35,8 +35,8 @@
 //   }
 // `;
 
-// function ItemInfo () {
-//   const [loading, setLoading] = useState(false);
+// function ItemInfo() {
+//   const [loading, setLoading] = useState(true);
 //   const curItemInfo = useSelector(state => state.curItemInfo);
 //   const [reviewsInfo, setReviewsInfo] = useState('ok'); // -> axios 구현한 후 이걸로 사용
 //   const config = {
@@ -46,49 +46,40 @@
 //     withCredentials: true
 //   };
 
-//   // const getGroupList = async () => {
-//   //   await axios
-//   //     .get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
-//   //     .then((res) => setReviewsInfo(res.data.data));
-//   // };
+//   const getGroupList = async () => {
+//     await axios
+//       .get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
+//       .then((res) => {
+
+//         setReviewsInfo(res.data.data)
+//       });
+//   };
+
 //   useEffect(() => {
-//     setLoading(true);
-//     const getGroupList = async () => {
-//       await axios
-//         .get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
-//         .then((res) => setReviewsInfo(res.data.data));
-//     };
 //     getGroupList();
 //     setLoading(false);
 //   }, []);
-//   console.log(reviewsInfo);
 
 //   return (
 //     <ItemInfoWrap>
-//       {/* advanced : iteminfo의 search 요소는 추후 모달 방식 이용하여 추가 */}
-//       {/* <Search setSearchedItem={setSearchedItem}/> */}
-//       {/* <div>{curItemInfo.photo}</div>
-//         <div>
-//           {curItemInfo.itemname}<br />{curItemInfo.price}
-//         </div> */}
 //       {loading
 //         ? <div>Loading중...</div>
-//         : <HeaderWrap>
+//         :
+//         <HeaderWrap>
 //           <img src={reviewsInfo[0].photo} alt='logo' className='img' />
 //           <div>
 //             <h3>이름 : {reviewsInfo[0].name}</h3>
 //             <h3>가격 : {reviewsInfo[0].price}</h3>
 //             <h3>평점 : {reviewsInfo[0].score}</h3>
 //           </div>
-
-//         </HeaderWrap>
-//         /* {reviewsInfo.map((review, idx) => {
-//             return (
-//               <div key={idx}>
-//                 <Review review={review} />
-//               </div>
-//             );
-//           })} */
+//           </HeaderWrap>
+//         // {reviewsInfo.map((review, idx) => {
+//         //   return (
+//         //     <div key={idx}>
+//         //       <Review review={review}
+//         //     </div>
+//         //   )
+//         // })}
 //       }
 
 //     </ItemInfoWrap>
