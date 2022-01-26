@@ -11,12 +11,13 @@ function Callback () {
   const { login } = actionCreators;
   useEffect(async () => {
     const url = new URL(window.location.href);
+    console.log(window.location.href);
     const authorizationCode = url.searchParams.get('code');
-    console.log(authorizationCode);
+    // console.log(authorizationCode);
     if (authorizationCode) {
       const userdata = await axios.post('http://localhost:8080/oauth', { authorizationCode }, { withCredentials: true });
-      console.log(userdata.data.data);
-      dispatch(login({ userId: userdata.data.data.id, email: userdata.data.data.email, nickname: userdata.data.data.nickname }));
+      // console.log(userdata.data.data);
+      dispatch(login({ oauth: true, userId: userdata.data.data.id, email: userdata.data.data.email, nickname: userdata.data.data.nickname }));
       navigate('/');
     }
   }, []);

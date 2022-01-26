@@ -4,6 +4,8 @@ import { actionCreators } from '../store/store';
 import styled from 'styled-components';
 import { ReviewModal } from './index';
 import axios from 'axios';
+//import { Cookies } from 'react-cookie';
+
 const Navi = styled.header`
 position: fixed;
 top: 0;
@@ -49,13 +51,21 @@ span {
 `;
 
 function Nav () {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    withCredentials: true
+  };
+
   const auth = useSelector(state => state.userInfo.auth, shallowEqual);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { logout } = actionCreators;
 
   const logoutHandler = () => {
-    axios.get('http://localhost:8080/logout');
+    axios.get('http://localhost:8080/logout', config);
+
     dispatch(logout());
     navigate('/');
   };

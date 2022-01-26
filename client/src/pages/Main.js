@@ -1,4 +1,4 @@
-import { useState/* , useEffect */ } from 'react';
+import { useEffect, useState } from 'react';
 import Search from '../components/Search';
 import Item from '../components/Item';
 import { useNavigate } from 'react-router-dom';
@@ -23,13 +23,17 @@ const SectionWrap = styled.section`
 `;
 
 function Main () {
+  useEffect(() => {
+
+  }, []);
+
   const [searchedItem, setSearchedItem] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { setCurItemInfo } = actionCreators;
 
   const handleOnClick = (event, item) => {
-    console.log(searchedItem); // semistandard때문에 하나 넣음
+    // console.log(searchedItem); // semistandard때문에 하나 넣음
     console.log(item);
     // item redux에 저장
     dispatch(setCurItemInfo(item));

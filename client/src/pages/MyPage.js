@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {/*  useState, */ useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Item from '../components/Item';
@@ -21,11 +21,12 @@ const InfoWrap = styled.div`
 
 function MyPage () {
   const userInfo = useSelector(state => state.userInfo);
-
   // const [itemReviewed, setItemReviewed] = useState([]);
 
   useEffect(() => {
     // axios.get 하고 itemReviewed 채워넣기
+    // axios.get(`http://localhost:8080/getitems?userid=${review.userId}`, config)
+
   }, []);
 
   return (
@@ -34,7 +35,7 @@ function MyPage () {
         <h1>{userInfo.nickname} 님 환영합니다 !</h1>
         <div>
           <div>{userInfo.email}</div>
-          <Link to='/mypage/edit' className='btn'>회원정보수정</Link>
+          {userInfo.oauth ? null : <Link to='/mypage/edit' className='btn'>회원정보수정</Link>}
         </div>
       </InfoWrap>
       <div>

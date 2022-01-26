@@ -101,8 +101,10 @@ const GithubButton = styled.button`
       background-color: #000;
     }
 `;
+
 // let count = 0;
 // let isoauth = false
+
 function Login () {
   const config = {
     headers: {
@@ -134,8 +136,7 @@ function Login () {
       // axios 성공시
       axios.post('http://localhost:8080/login', { email: inputInfo.email, password: inputInfo.password }, config)
         .then(el => {
-          console.log(el.data);
-          dispatch(login({ userId: el.data.data.id, email: el.data.data.email, nickname: el.data.data.nickname }));
+          dispatch(login({ oauth: false, userId: el.data.data.id, email: el.data.data.email, nickname: el.data.data.nickname }));
           navigate('/');
         });
       // axios 실패시
