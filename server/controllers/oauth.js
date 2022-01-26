@@ -16,7 +16,7 @@ module.exports = {
     } else {
       console.log(authorizationCode);
       const Token = await axios.post(
-                `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_secret=${clientSecret}&client_id=${clientID}&redirect_uri=http://localhost:3000&code=${authorizationCode}`
+                `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_secret=${clientSecret}&client_id=${clientID}&redirect_uri=http://localhost:3000/callback&code=${authorizationCode}`
 
       );
       // const Token = await axios.post("https://kauth.kakao.com/oauth", {
@@ -69,8 +69,8 @@ module.exports = {
     // res.send("hithisisoauth")
   },
   get: async (req, res) => {
-    // const something = await axios.get('https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=da4e288805f2fb1fe0efa41cb629944f&redirect_uri=http://localhost:8080/oauth',
-    //   { withCredentials: true });
+    console.log("일단 겟 요청은 잘 받았다 ")
+    res.redirect('http://localhost:3000')
   }
 
   // req.body로 authorization code 가 들어옴

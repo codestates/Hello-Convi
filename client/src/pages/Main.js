@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { actionCreators } from '../store/store';
 import styled from 'styled-components';
-// import axios from 'axios';
 // import dummyItems from '../dummy/dummyItems';
 
 const MainWrap = styled.div`
@@ -23,7 +22,6 @@ const SectionWrap = styled.section`
   margin-top: 20px;
 `;
 
-// let count = 0; // 이거 안넣으면 클릭시에 인증코드가 두번세번날라가서 요청실패함
 function Main () {
   const [searchedItem, setSearchedItem] = useState([]);
   const navigate = useNavigate();

@@ -4,3 +4,4 @@ export { default as Main } from './Main';
 export { default as ItemInfo } from './ItemInfo';
 export { default as MyPage } from './MyPage';
 export { default as MyPageEdit } from './MyPageEdit';
+export { default as Callback } from './Callback';

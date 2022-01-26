@@ -141,7 +141,7 @@ function Login () {
       // axios 실패시
     }
     if (event.target.className.includes('githubBtn')) {
-      window.location.assign('https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=da4e288805f2fb1fe0efa41cb629944f&redirect_uri=http://localhost:3000');
+      window.location.assign('https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=da4e288805f2fb1fe0efa41cb629944f&redirect_uri=http://localhost:3000/callback');
     }
     if (event.target.className === 'signup') {
       navigate('/signup');
