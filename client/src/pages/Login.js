@@ -68,7 +68,7 @@ const FloatingText = styled.div`
   text-align: center;
   color: #C4C4C4;
   line-height: 40px;
-`
+`;
 
 const LoginButton = styled.button`
     width: 80%;
@@ -106,7 +106,6 @@ const GithubButton = styled.button`
       height: 2.45rem;
     }
 `;
-
 
 function Login () {
   const config = {
@@ -162,10 +161,10 @@ function Login () {
           <LoginInput type='password' placeholder='password' onChange={handleInput} />
         </InputWrap>
         <br />
-          <button className='signup' onClick={handleSubmit}>아직 계정이 없습니까?</button>
-          <LoginButton className='loginBtn' onClick={handleSubmit}>Login</LoginButton>
-          <FloatingText>──────   또는   ──────</FloatingText>
-          <GithubButton className='githubBtn' onClick={handleSubmit}><img src='/images/kakao.png' alt='logo' className='cacao' /></GithubButton>
+        <button className='signup' onClick={handleSubmit}>아직 계정이 없습니까?</button>
+        <LoginButton className='loginBtn' onClick={handleSubmit}>Login</LoginButton>
+        <FloatingText>──────   또는   ──────</FloatingText>
+        <GithubButton className='githubBtn' onClick={handleSubmit}><img src='/images/kakao.png' alt='logo' className='cacao' /></GithubButton>
       </LoginContainer>
     </LoginWrap>
   );

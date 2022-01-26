@@ -12,11 +12,6 @@ function Callback () {
   useEffect(async () => {
     const url = new URL(window.location.href);
     const authorizationCode = url.searchParams.get('code');
-<<<<<<< HEAD
-    console.log(url.searchParams);
-=======
-    console.log(authorizationCode);
->>>>>>> d65bd7c1e57177b32bf229c801bd82ef3b927bce
     if (authorizationCode) {
       const userdata = await axios.post('http://localhost:8080/oauth', { authorizationCode }, { withCredentials: true });
       console.log(userdata.data.data);
