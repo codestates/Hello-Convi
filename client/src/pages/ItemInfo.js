@@ -46,13 +46,11 @@
 //     withCredentials: true
 //   };
 
-
-
 //   const getGroupList = async () => {
 //     await axios
 //       .get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
 //       .then((res) => {
-        
+
 //         setReviewsInfo(res.data.data)
 //       });
 //   };
@@ -61,12 +59,12 @@
 //     getGroupList();
 //     setLoading(false);
 //   }, []);
-  
+
 //   return (
 //     <ItemInfoWrap>
 //       {loading
 //         ? <div>Loading중...</div>
-//         : 
+//         :
 //         <HeaderWrap>
 //           <img src={reviewsInfo[0].photo} alt='logo' className='img' />
 //           <div>
