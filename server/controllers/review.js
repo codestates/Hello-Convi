@@ -57,28 +57,28 @@ module.exports = {
         .then(el => {
           const element = el[0];
           const result = [];
-          if(element.reviews.length === 0){
+          if (element.reviews.length === 0) {
             res.status(200).json({ data: null, message: 'empty review' });
           } else {
-          for (const ele of element.reviews) {
-            const payload = {
-              itemid: ele.item.id,
-              itemname: ele.item.name,
-              price: ele.item.price,
-              content: ele.item.content,
-              photo: ele.item.img,
-              review: {
-                reviewid: ele.id,
-                nickname: element.nickname,
-                content: ele.content,
-                score: ele.score
-              }
-            };
-            result.push(payload);
-          }
+            for (const ele of element.reviews) {
+              const payload = {
+                itemid: ele.item.id,
+                itemname: ele.item.name,
+                price: ele.item.price,
+                content: ele.item.content,
+                photo: ele.item.img,
+                review: {
+                  reviewid: ele.id,
+                  nickname: element.nickname,
+                  content: ele.content,
+                  score: ele.score
+                }
+              };
+              result.push(payload);
+            }
 
-          res.status(200).json({ data: result, message: 'ok' });
-        }
+            res.status(200).json({ data: result, message: 'ok' });
+          }
         });
     }
   },
