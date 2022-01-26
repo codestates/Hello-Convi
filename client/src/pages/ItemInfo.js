@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import Search from "../components/Search";
+// import Search from '../components/Search';
 import axios from 'axios';
 // import dummyItem1Reviews from '../dummy/item1Reviews';
 import Review from '../components/Review';
@@ -44,7 +44,7 @@ function ItemInfo () {
   const curItemInfo = useSelector(state => state.curItemInfo);
   const [reviews, setReviews] = useState([]); // -> axios 구현한 후 이걸로 사용
   // const [isErr, setIsErr] = useState(false);
-  console.log(reviews)
+  console.log(reviews);
 
   useEffect(() => {
     axios.get(`http://localhost:8080/review/${curItemInfo.itemid}`, config)
@@ -52,9 +52,9 @@ function ItemInfo () {
         console.log(res);
         setReviews(res.data.data);
       })
-    .catch((err) => {
-      console.log(err)
-    });
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   // console.log(curItemInfo);
 
@@ -75,12 +75,12 @@ function ItemInfo () {
         </div>
       </HeaderWrap>
       {reviews.map((review, idx) => {
-          return (
-            <div key={idx}>
-              <Review review={review} />
-            </div>
-          );
-        })}
+        return (
+          <div key={idx}>
+            <Review review={review} />
+          </div>
+        );
+      })}
     </ItemInfoWrap>
   );
 }
