@@ -57,15 +57,15 @@ function MyPage () {
       </InfoWrap>
       {!loading
         ? (
-        <div>
-          {itemReviewed.map((item, idx) => {
-            return (
-              <div key={idx}>
-                <Item item={item} />
-              </div>
-            );
-          })}
-        </div>)
+          <div>
+            {itemReviewed.map((item, idx) => {
+              return (
+                <div key={idx}>
+                  <Item item={item} />
+                </div>
+              );
+            })}
+          </div>)
         : null}
     </MyPageWrap>
   );
