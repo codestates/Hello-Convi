@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { actionCreators } from '../store/store';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -75,6 +76,8 @@ const ModifyButton = styled.button`
 function MyPageEdit () {
   const navigate = useNavigate();
   const userInfo = useSelector(state => state.userInfo);
+  const dispatch = useDispatch();
+  const { setUserInfo } = actionCreators;
 
   const config = {
     headers: {
@@ -146,6 +149,8 @@ function MyPageEdit () {
     checkText.password === '확인되었습니다.') {
       axios.patch('http://localhost:8080/user', inputInfo, config).then((res) => {
         // 마이페이지로 리다이렉트
+        console.log({ [setUserInfo]: '!' });
+        dispatch(setUserInfo({ nickname: inputInfo.nickname }));
         navigate('/mypage');
       }).catch(err => {
         setCheckText({ ...checkText, submit: '알수 없는 오류' });

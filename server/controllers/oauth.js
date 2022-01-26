@@ -43,9 +43,17 @@ module.exports = {
           const payload = { id, email, nickname, createdAt, updatedAt };
 
           if (!created) {
+            res.cookie('id', id);
+            res.cookie('nickname', nickname);
+            res.cookie('email', email);
+            res.cookie('oauth', true);
             res.cookie('accessToken', accessToken).status(200).json({ data: payload, message: 'oauth login successfully' });
             // res.cookie('accessToken', accessToken).status(200).redirect('http://localhost:3000')
           } else {
+            res.cookie('id', id);
+            res.cookie('nickname', nickname);
+            res.cookie('email', email);
+            res.cookie('oauth', true);
             res.cookie('accessToken', accessToken).status(201).json({ data: payload, message: 'oauth sign up and login successfully' });
           }
         });
