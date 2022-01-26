@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Review from '../components/Review';
 import styled from 'styled-components';
@@ -36,6 +37,8 @@ function ItemInfo () {
   const [loading, setLoading] = useState(false);
   const curItemInfo = useSelector(state => state.curItemInfo);
   const [reviewsInfo, setReviewsInfo] = useState([{ photo: '', name: '', price: '', score: '' }]); // -> axios 구현한 후 이걸로 사용
+  const navigate = useNavigate();
+
   const config = {
     headers: {
       'Content-Type': 'application/json'
@@ -52,6 +55,7 @@ function ItemInfo () {
   };
 
   useEffect(() => {
+    if (curItemInfo.itemid === '') navigate('/');
     setLoading(true);
     getGroupList();
     setLoading(false);
@@ -66,11 +70,11 @@ function ItemInfo () {
         : (
           <ItemInfoWrap>
             <HeaderWrap>
-              <img src={reviewsInfo[0].photo} alt='logo' className='img' />
+              <img src={curItemInfo.photo} alt='logo' className='img' />
               <div>
-                <h3>이름 : {reviewsInfo[0].name}</h3>
-                <h3>가격 : {reviewsInfo[0].price}</h3>
-                <h3>평점 : {reviewsInfo[0].score}</h3>
+                <h3>이름 : {curItemInfo.itemname}</h3>
+                <h3>가격 : {curItemInfo.price}</h3>
+                <h3>평점 : {curItemInfo.score}</h3>
               </div>
             </HeaderWrap>
             {reviewsInfo.map((item, idx) => {
