@@ -20,8 +20,8 @@ module.exports = {
         .then(el => {
           const result = [];
 
-          el.map(ele => {
-            return ele.reviews.map(elel => {
+          el.map((ele) => {
+            return ele.reviews.map((elel) => {
               const payload = {
                 price: ele.price,
                 photo: ele.img,
