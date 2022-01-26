@@ -23,8 +23,8 @@ const SectionWrap = styled.section`
 `;
 
 function Main () {
-  useEffect(()=>{
-    
+  useEffect(() => {
+
   }, []);
 
   const [searchedItem, setSearchedItem] = useState([]);
@@ -33,7 +33,7 @@ function Main () {
   const { setCurItemInfo } = actionCreators;
 
   const handleOnClick = (event, item) => {
-    //console.log(searchedItem); // semistandard때문에 하나 넣음
+    // console.log(searchedItem); // semistandard때문에 하나 넣음
     console.log(item);
     // item redux에 저장
     dispatch(setCurItemInfo(item));
