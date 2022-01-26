@@ -1,7 +1,7 @@
-// import { useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-// import Search from "../components/Search";
-// import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import Search from "../components/Search";
+import axios from 'axios';
 // import dummyItem1Reviews from '../dummy/item1Reviews';
 import Review from '../components/Review';
 import styled from 'styled-components';
@@ -35,27 +35,27 @@ const HeaderWrap = styled.div`
 `;
 
 function ItemInfo () {
-  // const config = {
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   },
-  //   withCredentials: true
-  // };
-  // const curItemInfo = useSelector(state => state.curItemInfo);
-  // const [searchedItem, setSearchedItem] = useState([]);- advanced
-  // const [reviews, setReviews] = useState([]); // -> axios 구현한 후 이걸로 사용
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    withCredentials: true
+  };
+  const curItemInfo = useSelector(state => state.curItemInfo);
+  const [reviews, setReviews] = useState([]); // -> axios 구현한 후 이걸로 사용
   // const [isErr, setIsErr] = useState(false);
+  console.log(reviews)
 
-  // useEffect(() => {
-  //   axios.get(`http://localhost:8080/review/${curItemInfo.itemid}`, config)
-  //     .then((res) => {
-  //       console.log(res);
-  //       setReviews(res.data.data);
-  //     });
-  //   .catch((err) => {
-  //     setIsErr(err);
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get(`http://localhost:8080/review/${curItemInfo.itemid}`, config)
+      .then((res) => {
+        console.log(res);
+        setReviews(res.data.data);
+      })
+    .catch((err) => {
+      console.log(err)
+    });
+  }, []);
   // console.log(curItemInfo);
 
   return (
@@ -74,9 +74,13 @@ function ItemInfo () {
           <h3>평균 평점</h3>
         </div>
       </HeaderWrap>
-      <Review />
-      <Review />
-      <Review />
+      {reviews.map((review, idx) => {
+          return (
+            <div key={idx}>
+              <Review review={review} />
+            </div>
+          );
+        })}
     </ItemInfoWrap>
   );
 }
