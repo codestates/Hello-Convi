@@ -11,7 +11,7 @@ const ReviewBox = styled.div`
 
   .faStar {
     margin: 20px 5px 20px 0;
-    opacity: 0.1;
+    color: #B2B2B2;
     cursor: pointer;
     font-size: 20px;
   }
