@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { useEffect,useState } from 'react';
-import Search from "../components/Search";
+import { useEffect, useState } from 'react';
+import Search from '../components/Search';
 import axios from 'axios';
 import dummyItem1Reviews from '../dummy/item1Reviews';
 import Review from '../components/Review';
@@ -35,9 +35,10 @@ const HeaderWrap = styled.div`
   }
 `;
 
-function ItemInfo () {
+function ItemInfo() {
+  const [loading, setLoading] = useState(false);
   const curItemInfo = useSelector(state => state.curItemInfo);
-  const [reviewsInfo, setReviewsInfo] = useState([]); // -> axios 구현한 후 이걸로 사용
+  const [reviewsInfo, setReviewsInfo] = useState('ok'); // -> axios 구현한 후 이걸로 사용
   const config = {
     headers: {
       'Content-Type': 'application/json'
@@ -45,17 +46,23 @@ function ItemInfo () {
     withCredentials: true
   };
 
+  // const getGroupList = async () => {
+  //   await axios
+  //     .get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
+  //     .then((res) => setReviewsInfo(res.data.data));
+  // };
   useEffect(() => {
-    // axios.get 하고 itemReviewed 채워넣기
-    axios.get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
-    .then(el => {
-      console.log(el.data.data[0])
-      setReviewsInfo(el.data.data)})
-    .catch(err=>console.log(err))
 
+    setLoading(true)
+    const getGroupList = async () => {
+      await axios
+        .get(`http://localhost:8080/review?itemid=${curItemInfo.itemid}`, config)
+        .then((res) => setReviewsInfo(res.data.data));
+    };
+    getGroupList()
+    setLoading(false)
   }, []);
-
-
+  console.log(reviewsInfo)
 
   return (
     <ItemInfoWrap>
@@ -65,21 +72,26 @@ function ItemInfo () {
         <div>
           {curItemInfo.itemname}<br />{curItemInfo.price}
         </div> */}
-      <HeaderWrap>
-        {/* <img src={reviewsInfo[1].photo} alt='logo' className='img' />
-        <div>
-          <h3>이름 : {reviewsInfo[0].name}</h3>
-          <h3>가격 : {reviewsInfo[0].price}</h3>
-          <h3>평점 : {reviewsInfo[0].score}</h3>
-        </div> */}
-      </HeaderWrap>
-      {/* {reviewsInfo.map((review, idx) => {
-          return (
-            <div key={idx}>
-              <Review review={review} />
-            </div>
-          );
-        })} */}
+      {loading ? <div>Loading중...</div>
+        :
+        <HeaderWrap>
+          <img src={reviewsInfo[0].photo} alt='logo' className='img' />
+          <div>
+            <h3>이름 : {reviewsInfo[0].name}</h3>
+            <h3>가격 : {reviewsInfo[0].price}</h3>
+            <h3>평점 : {reviewsInfo[0].score}</h3>
+          </div>
+
+        </HeaderWrap>
+        /* {reviewsInfo.map((review, idx) => {
+            return (
+              <div key={idx}>
+                <Review review={review} />
+              </div>
+            );
+          })} */
+      }
+
     </ItemInfoWrap>
   );
 }
