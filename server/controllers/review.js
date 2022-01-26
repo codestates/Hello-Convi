@@ -57,7 +57,9 @@ module.exports = {
         .then(el => {
           const element = el[0];
           const result = [];
-
+          if(element.reviews.length === 0){
+            res.status(200).json({ data: null, message: 'empty review' });
+          } else {
           for (const ele of element.reviews) {
             const payload = {
               itemid: ele.item.id,
@@ -76,6 +78,7 @@ module.exports = {
           }
 
           res.status(200).json({ data: result, message: 'ok' });
+        }
         });
     }
   },
