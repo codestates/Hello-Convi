@@ -57,32 +57,29 @@ function ItemInfo () {
     setLoading(false);
   }, []);
 
-  console.log(reviewsInfo);
-
   return (
     <div>
       {loading
         ? (<div>Loading중...</div>)
-        : 
-        (
-        <ItemInfoWrap>
-          <HeaderWrap>
-            <img src={reviewsInfo[0].photo} alt='logo' className='img' />
-            <div>
-              <h3>이름 : {reviewsInfo[0].name}</h3>
-              <h3>가격 : {reviewsInfo[0].price}</h3>
-              <h3>평점 : {reviewsInfo[0].score}</h3>
-            </div>
-          </HeaderWrap>
-          {reviewsInfo.map((item, idx) => {
-            return (
-              <div key={idx}>
-                <Review item={item} />
+        : (
+          <ItemInfoWrap>
+            <HeaderWrap>
+              <img src={reviewsInfo[0].photo} alt='logo' className='img' />
+              <div>
+                <h3>이름 : {reviewsInfo[0].name}</h3>
+                <h3>가격 : {reviewsInfo[0].price}</h3>
+                <h3>평점 : {reviewsInfo[0].score}</h3>
               </div>
-            );
-          })}
-        </ItemInfoWrap>
-        )}
+            </HeaderWrap>
+            {reviewsInfo.map((item, idx) => {
+              return (
+                <div key={idx}>
+                  <Review item={item} />
+                </div>
+              );
+            })}
+          </ItemInfoWrap>
+          )}
     </div>
   );
 }
