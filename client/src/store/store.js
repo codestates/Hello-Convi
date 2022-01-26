@@ -7,6 +7,7 @@ const setCurItemInfo = createAction('setCurItemInfo');
 const reducer = createReducer({
   userInfo: {
     auth: false,
+    oauth: false,
     email: '',
     userId: '',
     nickname: ''
