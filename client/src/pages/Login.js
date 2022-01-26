@@ -16,7 +16,7 @@ const LoginWrap = styled.div`
 `;
 const LoginContainer = styled.div`
   width: 300px;
-  height: 500px;
+  height: 570px;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -64,17 +64,22 @@ const LoginInput = styled.input`
   margin-bottom: 3px;
 `;
 
+const FloatingText = styled.div`
+  text-align: center;
+  color: #C4C4C4;
+  line-height: 40px;
+`
+
 const LoginButton = styled.button`
-    width: 100px;
+    width: 80%;
     height: 2.5rem;
     border: none;
     border-radius: 10px;
-    background-color: #9e9e9e;
+    background-color: #34495E;
     color: #ffffff;
     font-weight: 700;
-    font-size: 1.1em;
+    font-size: 0.9em;
     transition: all 0.5s;
-    margin-right: 10px;
     &:hover,:focus {
       cursor: pointer;
       outline: none;
@@ -84,26 +89,24 @@ const LoginButton = styled.button`
 `;
 
 const GithubButton = styled.button`
-    width: 100px;
+    width: 80%;
     height: 2.5rem;
     border: none;
     border-radius: 10px;
-    background-color: #9e9e9e;
+    background-color: #FEE521;    
     color: #ffffff;
     font-weight: 700;
-    font-size: 1.1em;
     transition: all 0.5s;
-    margin-left: 10px;
     &:hover,:focus {
       cursor: pointer;
       outline: none;
       transform: scale(1.05);
-      background-color: #000;
+    }
+    .cacao {
+      height: 2.45rem;
     }
 `;
 
-// let count = 0;
-// let isoauth = false
 
 function Login () {
   const config = {
@@ -158,14 +161,13 @@ function Login () {
           <LoginInput type='password' placeholder='password' onChange={handleInput} />
         </InputWrap>
         <br />
-        <button className='signup' onClick={handleSubmit}>아직 계정이 없습니까?</button>
-        <div>
+          <button className='signup' onClick={handleSubmit}>아직 계정이 없습니까?</button>
           <LoginButton className='loginBtn' onClick={handleSubmit}>Login</LoginButton>
-          <GithubButton className='githubBtn' onClick={handleSubmit}>Kakao</GithubButton>
-        </div>
+          <FloatingText>──────   또는   ──────</FloatingText>
+          <GithubButton className='githubBtn' onClick={handleSubmit}><img src='/images/kakao.png' alt='logo' className='cacao' /></GithubButton>
       </LoginContainer>
     </LoginWrap>
   );
 }
-
+// client/public/images/kakao.png
 export default Login;
