@@ -22,7 +22,7 @@ const MainWrap = styled.div`
 const SectionWrap = styled.section`
   margin-top: 20px;
 `;
-//let count = 0; // 이거 안넣으면 클릭시에 인증코드가 두번세번날라가서 요청실패함
+// let count = 0; // 이거 안넣으면 클릭시에 인증코드가 두번세번날라가서 요청실패함
 function Main () {
   const [searchedItem, setSearchedItem] = useState([]);
   const navigate = useNavigate();
@@ -40,17 +40,17 @@ function Main () {
   useEffect(() => {
     const url = new URL(window.location.href);
     const authorizationCode = url.searchParams.get('code');
-    //console.log(authorizationCode);
+    // console.log(authorizationCode);
 
     if (authorizationCode/*  && count === 0 */) {
-      //count++;
+      // count++;
       axios.post('http://localhost:8080/oauth', { authorizationCode: authorizationCode }, { withCredentials: true })
         .then(el => {
           dispatch(login({ userId: el.data.data.id, email: el.data.data.email, nickname: el.data.data.nickname }));
           navigate('/');
         });
     }
-  }, []) 
+  }, []);
 
   return (
     <MainWrap>
