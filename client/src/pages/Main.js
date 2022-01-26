@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Search from '../components/Search';
 import Item from '../components/Item';
 import { useNavigate } from 'react-router-dom';
@@ -23,10 +23,6 @@ const SectionWrap = styled.section`
 `;
 
 function Main () {
-  useEffect(() => {
-
-  }, []);
-
   const [searchedItem, setSearchedItem] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
