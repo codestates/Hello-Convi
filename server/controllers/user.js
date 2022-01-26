@@ -5,6 +5,7 @@ require('dotenv').config();
 module.exports = {
   get: async (req, res) => {
     const token = req.cookies.accessToken;
+    console.log(req.cookies.refreshToken)
     const data = verify(token, process.env.ACCESS_SECRET, (err, result) => {
       if (err) {
         return null;
