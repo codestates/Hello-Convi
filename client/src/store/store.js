@@ -23,7 +23,8 @@ const reducer = createReducer({
       nickname: '',
       content: '',
       score: '',
-      createdAt: ''
+      createdAt: '',
+      updatedAt: ''
     }
   }
 }, {

@@ -167,7 +167,7 @@ function Login () {
         <button className='signup' onClick={handleSubmit}>아직 계정이 없습니까?</button>
         <LoginButton className='loginBtn' onClick={handleSubmit}>Login</LoginButton>
         <FloatingText>──────   또는   ──────</FloatingText>
-        <GithubButton className='githubBtn' onClick={handleSubmit}><img src='/images/kakao.png' alt='logo' className='cacao' onClick={handleSubmit} /></GithubButton>
+        <GithubButton className='githubBtn' onClick={handleSubmit}><img src='/images/kakao.png' alt='logo' className='cacao' onClick={handleSubmit}/></GithubButton>
       </LoginContainer>
     </LoginWrap>
   );

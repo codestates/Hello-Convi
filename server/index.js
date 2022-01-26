@@ -5,7 +5,7 @@ const port = 8080;
 const cors = require('cors');
 const app = express();
 
-const login = require('./controllers/login');
+const login = require('./routes/login');
 const logout = require('./controllers/logout');
 const getitems = require('./controllers/getitems');
 const dropout = require('./controllers/dropout');
@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.post('/login', login);
+app.use('/login', login);
 app.get('/logout', logout);
 app.get('/getitems', getitems);
 app.post('/signup', signup);

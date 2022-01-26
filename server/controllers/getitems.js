@@ -1,7 +1,6 @@
 const { user, item, review } = require('../models');
 const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
-// const {fn, col, where, literal} = require('sequelize')
 
 module.exports = async (req, res) => {
   const query = req.query.search;
@@ -10,9 +9,7 @@ module.exports = async (req, res) => {
       order: [[review, 'createdAt', 'DESC']],
       include: [{ model: review, required: true }]
     });
-    // [{}{}]
     const recentItemList = itemList.slice(0, 5);
-    // res.json({data: recentItemList}) //우선 하나만 받아오게
     const payloadArray = [];
     for (const recentitem of recentItemList) {
       const recentreview = recentitem.reviews[0];
