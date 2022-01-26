@@ -5,7 +5,6 @@ import { actionCreators } from '../store/store';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-
 const LoginWrap = styled.div`
   display: flex;
   justify-content: center;
@@ -168,8 +167,8 @@ function Login () {
           <FloatingText>──────   또는   ──────</FloatingText>
           <GithubButton className='githubBtn' onClick={handleSubmit}><img src='/images/kakao.png' alt='logo' className='cacao' /></GithubButton>
       </LoginContainer>
-    </LoginWrap> 
+    </LoginWrap>
   );
 }
-//client/public/images/kakao.png
+// client/public/images/kakao.png
 export default Login;
