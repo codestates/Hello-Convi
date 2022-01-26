@@ -5,6 +5,7 @@ import { actionCreators } from '../store/store';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
+
 const LoginWrap = styled.div`
   display: flex;
   justify-content: center;
@@ -88,7 +89,9 @@ const GithubButton = styled.button`
     height: 2.5rem;
     border: none;
     border-radius: 10px;
-    background-color: #9e9e9e;
+    background-image: url('/images/kakao.png');
+    background-size: cover;
+    background-color: #ffed2b;    
     color: #ffffff;
     font-weight: 700;
     font-size: 1.1em;
@@ -98,7 +101,7 @@ const GithubButton = styled.button`
       cursor: pointer;
       outline: none;
       transform: scale(1.05);
-      background-color: #000;
+      
     }
 `;
 // let count = 0;
@@ -160,11 +163,11 @@ function Login () {
         <button className='signup' onClick={handleSubmit}>아직 계정이 없습니까?</button>
         <div>
           <LoginButton className='loginBtn' onClick={handleSubmit}>Login</LoginButton>
-          <GithubButton className='githubBtn' onClick={handleSubmit}>Kakao</GithubButton>
+          <GithubButton className='githubBtn' onClick={handleSubmit}></GithubButton>
         </div>
       </LoginContainer>
     </LoginWrap>
   );
 }
-
+//client/public/images/kakao.png
 export default Login;
