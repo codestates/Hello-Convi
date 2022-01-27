@@ -14,6 +14,7 @@ module.exports = (req, res) => {
   user.destroy({ where: { id: data.id } })
     .then((result) => {
       res.json({ data: result, message: 'Success User Delete' });
+      res.redirect('/');
     })
     .catch((err) => {
       console.error(err);

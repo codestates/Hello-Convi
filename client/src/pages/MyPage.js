@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Item from '../components/Item';
 import styled from 'styled-components';
 import axios from 'axios';
+import { DropOutModal } from '../components';
 
 const MyPageWrap = styled.div`
   display: flex;
@@ -53,6 +54,7 @@ function MyPage () {
         <div>
           <div>{userInfo.email}</div>
           {userInfo.oauth ? null : <Link to='/mypage/edit' className='btn'>회원정보수정</Link>}
+          <DropOutModal />
         </div>
       </InfoWrap>
       {!loading
