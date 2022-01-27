@@ -1,4 +1,4 @@
-const { user } = require('../models');
+const { user, review } = require('../models');
 const { verify } = require('jsonwebtoken');
 require('dotenv').config();
 
@@ -11,12 +11,15 @@ module.exports = (req, res) => {
       return result;
     }
   });
-  user.destroy({ where: { id: data.id } })
+  review.destroy({ where: { userId: data.id } })
     .then((result) => {
-      res.json({ data: result, message: 'Success User Delete' });
-    })
-    .catch((err) => {
-      console.error(err);
+      user.destroy({ where: { id: data.id } })
+        .then((result) => {
+          res.json({ data: result, message: 'Success User Delete' });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     });
 };
 
