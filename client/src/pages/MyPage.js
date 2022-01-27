@@ -15,8 +15,21 @@ const MyPageWrap = styled.div`
   padding-top: 100px;
 `;
 const InfoWrap = styled.div`
+width: 345px;
   margin-right: 150px;
-  margin-bottom: 30px;
+`;
+
+const Info = styled.div`
+  .btn {
+    text-decoration: none;
+    &:visited {
+      color: black;
+    }
+    &:hover {
+      color: gray;
+    }
+  }
+  
 `;
 
 function MyPage () {
@@ -51,12 +64,12 @@ function MyPage () {
     <MyPageWrap>
       <InfoWrap>
         <h1>{userInfo.nickname} 님 환영합니다 !</h1>
-        <div>
+        <Info>
           <div>{userInfo.email}</div>
           {userInfo.oauth ? null : <Link to='/mypage/edit' className='btn'>회원정보수정</Link>}
-          <DropOutModal />
-        </div>
+        </Info>
       </InfoWrap>
+      {userInfo.oauth ? <br /> : <DropOutModal />}
       {!loading
         ? (
           <div>
