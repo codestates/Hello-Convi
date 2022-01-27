@@ -15,7 +15,12 @@ module.exports = (req, res) => {
     .then((result) => {
       user.destroy({ where: { id: data.id } })
         .then((result) => {
-          res.json({ data: result, message: 'Success User Delete' });
+          res.clearCookie('id');
+          res.clearCookie('nickname');
+          res.clearCookie('email');
+          res.clearCookie('oauth');
+          res.clearCookie('accessToken');
+          res.status(205).send('ok');
         })
         .catch((err) => {
           console.error(err);
