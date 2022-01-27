@@ -52,7 +52,6 @@ function Search ({ setSearchedItem }) {
     axios.get('http://localhost:8080/getitems', config)
       .then(res => {
         setSearchedItem(res.data.data);
-        console.log(res.data.data);
       });
     // console.log(itemlist)
   }, []);
