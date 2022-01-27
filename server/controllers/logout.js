@@ -4,7 +4,7 @@ module.exports = (req, res) => {
   res.clearCookie('email');
   res.clearCookie('oauth');
   res.clearCookie('accessToken').status(205).send('ok');
-  res.redirect('/')
+  res.redirect('/');
 };
 
 // 끝
